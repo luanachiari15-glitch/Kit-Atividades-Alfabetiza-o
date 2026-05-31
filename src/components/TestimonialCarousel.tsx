@@ -8,9 +8,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const TESTIMONIAL_IMAGES = [
   { id: 't-1', url: 'https://i.ibb.co/QvxcDDyv/Whats-App-Image-2026-05-31-at-18-14-15.jpg', alt: 'Depoimento de Mãe - Alfabetização Kit' },
+  { id: 't-new', url: 'https://i.ibb.co/7xkgdqRF/Whats-App-Image-2026-05-31-at-19-36-25.jpg', alt: 'Depoimento WhatsApp Novidade' },
   { id: 't-2', url: 'https://i.ibb.co/QFTMwv6t/Whats-App-Image-2026-05-31-at-18-22-56.jpg', alt: 'Feedback Whastapp Positivo 2a feira' },
   { id: 't-3', url: 'https://i.ibb.co/QvF3Cn4Y/Whats-App-Image-2026-05-31-at-18-46-54.jpg', alt: 'Experiência de Sucesso com o material' },
-  { id: 't-4', url: 'https://i.ibb.co/RThzg8v9/Whats-App-Image-2026-05-31-at-18-53-22.jpg', alt: 'Depoimento Prático' }
+  { id: 't-4', url: 'https://i.ibb.co/RThzg8v9/Whats-App-Image-2026-05-31-at-18-53-22.jpg', alt: 'Depoimento Prático' },
+  { id: 't-5', url: 'https://i.ibb.co/XkFXtzdW/Whats-App-Image-2026-05-31-at-19-41-36.jpg', alt: 'Novo Depoimento WhatsApp' }
 ];
 
 export default function TestimonialCarousel() {

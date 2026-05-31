@@ -724,24 +724,24 @@ export default function App() {
       </section>
 
       {/* 10. GARANTIA */}
-      <section className="bg-[#F0FDF4] py-8 relative">
+      <section className="bg-[#F0FDF4] py-10 relative">
         <div className="max-w-3xl mx-auto px-4">
           
-          <div className="bg-white rounded-2xl p-6 sm:p-9.5 shadow-sm border border-emerald-100 flex flex-col md:flex-row items-center md:items-start md:space-x-6 text-center md:text-left fade-in-section">
+          <div className="bg-white rounded-2xl p-6 sm:p-9.5 shadow-md border-2 border-emerald-500/20 flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left fade-in-section">
             
             {/* Left large icon column */}
-            <div className="bg-emerald-50 rounded-full p-3 mb-4 md:mb-0 flex-shrink-0 border-2 border-emerald-100 flex items-center justify-center">
-              <ShieldCheck className="w-12 h-12 text-[#22C55E]" />
+            <div className="bg-emerald-500 rounded-full p-5 mb-4 md:mb-0 flex-shrink-0 border-4 border-emerald-100 shadow-lg flex items-center justify-center transform hover:scale-105 transition-all duration-300">
+              <ShieldCheck className="w-16 h-16 text-white" />
             </div>
 
             {/* Right text box */}
-            <div>
-              <h3 className="text-md sm:text-lg font-bold text-slate-950 tracking-tight flex items-center justify-center md:justify-start gap-1.5">
+            <div className="flex-1">
+              <h3 className="text-base sm:text-xl font-black text-emerald-900 tracking-tight flex items-center justify-center md:justify-start gap-1.5 uppercase">
                 <span>🛡️</span>
                 <span>Garantia INCONDICIONAL de 7 dias</span>
               </h3>
-              <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed mt-3.5">
-                Se em 7 dias você não amar o material — por qualquer motivo, sem precisar dar nenhuma explicação — é só mandar um e-mail e devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é completamente nosso. Você não tem nada a perder.
+              <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed mt-4">
+                Se em <span className="text-emerald-600 font-extrabold">7 dias</span> você não amar o material, por qualquer motivo e sem precisar dar nenhuma explicação, basta nos enviar um e-mail e nós <span className="text-emerald-700 font-extrabold underline decoration-emerald-300 decoration-2">devolvemos 100% do seu dinheiro</span>. <span className="font-bold text-slate-800">Sem perguntas, sem burocracia.</span> O <span className="text-emerald-600 font-extrabold">risco é completamente nosso</span>, você não tem <span className="text-emerald-700 font-black">absolutamente nada a perder</span>!
               </p>
             </div>
 

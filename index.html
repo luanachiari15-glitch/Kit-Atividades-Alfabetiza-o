@@ -2,6 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        try {
+          var _fetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get: function() {
+              return _fetch;
+            },
+            set: function(v) {
+              _fetch = v;
+            }
+          });
+        } catch (e) {
+          console.warn("Could not redefine fetch:", e);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kit de Alfabetização Infantil — Do Zero à Leitura Fluente</title>
   </head>
