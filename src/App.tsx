@@ -597,6 +597,23 @@ export default function App() {
                 >
                   Adquirir Básico por R$ 9,90
                 </button>
+
+                {/* ATENÇÃO BANNER COAXING PREMIUM SELECT */}
+                <div className="mt-4 p-3.5 bg-amber-50 rounded-xl border-2 border-amber-200 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-amber-100/20 animate-pulse pointer-events-none" />
+                  
+                  <div className="relative z-10 flex flex-col items-center justify-center">
+                    <p className="text-amber-900 text-xs font-black flex items-center justify-center gap-1.5 leading-snug">
+                      <span>⚠️ ATENÇÃO!</span>
+                      <span className="underline decoration-amber-300 decoration-2">Temos uma oferta ainda melhor para você</span>
+                    </p>
+                    <p className="text-amber-800 text-[11px] font-extrabold mt-2 flex items-center justify-center gap-1.5">
+                      <span>Escolha o Pacote Premium ao lado</span>
+                      <span className="hidden md:inline text-base animate-pulse">➡️</span>
+                      <span className="inline md:hidden text-lg animate-bounce">👇</span>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
