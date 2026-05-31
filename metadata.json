@@ -1,0 +1,6 @@
+{
+  "name": "Kit de Alfabetização",
+  "description": "Página de vendas profissional para infoproduto digital de alfabetização infantil, com design dinâmico, interativo e persuasivo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
