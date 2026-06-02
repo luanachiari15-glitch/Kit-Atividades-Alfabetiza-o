@@ -1,10 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export default function WistiaPlayer() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    // 1. Check if Wistia base scripts are already in the head. If not, add them dynamically.
     const script1Id = 'wistia-player-base-script';
     const script2Id = 'wistia-player-embed-script';
 
@@ -27,57 +24,31 @@ export default function WistiaPlayer() {
   }, []);
 
   return (
-    <div className="w-full max-w-[340px] sm:max-w-[380px] mx-auto relative group">
-      {/* Decorative Outer Ambient Glow */}
-      <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-300 rounded-[32px] blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-      
-      {/* Phone Case Bezel Wrapper */}
+    <div className="w-full max-w-[350px] mx-auto">
       <div 
-        ref={containerRef} 
-        className="relative bg-black rounded-[28px] overflow-hidden shadow-2xl border-[6px] border-slate-950 p-1 flex flex-col aspect-[9/16]"
-        id="wistia-player-wrapper"
-      >
-        {/* Dynamic camera punch-hole styling decoration for realism */}
-        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-20 h-4 bg-slate-950 rounded-full z-30 flex items-center justify-center">
-          <div className="w-2.5 h-2.5 bg-slate-900 rounded-full border border-slate-800"></div>
-        </div>
-
-        {/* Outer background element fallback with aspect ratio fit */}
-        <div className="w-full h-full rounded-[20px] overflow-hidden bg-slate-950 relative z-20">
-          <div 
-            className="w-full h-full"
-            dangerouslySetInnerHTML={{
-              __html: `
-                <style>
-                  wistia-player[media-id='s2ni44xfbi']:not(:defined) { 
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/s2ni44xfbi/swatch'); 
-                    display: block; 
-                    filter: blur(5px); 
-                    padding-top: 177.78%; 
-                  }
-                  wistia-player {
-                    border-radius: 20px !important;
-                    overflow: hidden !important;
-                  }
-                </style> 
-                <wistia-player 
-                  media-id="s2ni44xfbi" 
-                  aspect="0.5625" 
-                  style="width: 100%; height: 100%; display: block;"
-                ></wistia-player>
-              `
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Helper label below the smartphone-bezel */}
-      <div className="mt-3.5 bg-slate-100 border border-slate-200/60 rounded-xl py-2 px-3 text-center max-w-[280px] mx-auto shadow-sm select-none">
-        <p className="text-slate-600 text-[11px] font-extrabold flex items-center justify-center gap-1.5">
-          <span>🔊</span>
-          <span>Toque no player acima para ativar o som</span>
-        </p>
-      </div>
+        dangerouslySetInnerHTML={{
+          __html: `
+            <style>
+              wistia-player[media-id='s2ni44xfbi']:not(:defined) { 
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/s2ni44xfbi/swatch'); 
+                display: block; 
+                filter: blur(5px); 
+                padding-top: 177.78%; 
+              }
+            </style> 
+            <wistia-player media-id="s2ni44xfbi" aspect="0.5625">
+              <div class="wistia_preload_transcript_outer_wrapper" style="width: 100%; height: 100%; display:flex; justify-content:center; align-items: center; margin-top:-177.78%;">
+                <div class="wistia_preload_transcript_inner_wrapper" style="overflow: auto;">
+                  <p class="wistia_preload_transcript_text" aria-hidden="true" tabindex="-1" style="text-align: justify; font-size: 5px !important;">
+                    Professora, mãe ou pai, se toda semana você perde tempo precioso tentando procurar ou criar atividades de alfabetização do zero para as crianças, assista esse vídeo até o final. Você já sabe ensinar e cuidar do desenvolvimento delas. O seu problema não é falta de conhecimento. O problema é o cansaço de ter que planejar tudo sozinho, toda semana. Principalmente quando o tempo é curto e a rotina é puxada. E, preste atenção, isso não significa que você não está fazendo bom trabalho. Significa apenas que você precisa de mais praticidade no seu dia a dia. Foi exatamente por isso que criamos o alfabetização e letramento na prática. Pacote com mais de três mil e setecentos atividades prontas para imprimir, criado para ajudar você a economizar horas de planejamento e aplicar atividades de forma rápida e eficiente. Dentro dele você encontra, sílabas simples e complexas, coordenação motora completa, vogais e consciência fonológica, alfabeto, silábico, de a a z, formação de palavras e frases, caligrafia inicial e cursiva, matemática, ensino religioso e artes, além de cinco bônus gratuitos exclusivos que você pagaria mais de duzentos e setenta e cinco reais comprando por fora, e hoje leva de graça ao adquirir esse kit. Acesso vitalício e todas as atualizações futuras inclusas. Funciona assim, você acessa o material, escolhe a atividade, imprime e aplica com a criança. Simples assim, sem precisar criar tudo do zero, sem passar horas procurando atividades na internet, sem o desgaste de ter que inventar novas ideias todos os dias. O material se adapta a diferentes níveis de aprendizagem, funciona tanto em casa quanto em sala de aula, e ajuda a tornar o processo de alfabetização mais leve, organizado e produtivo. Se você quer economizar tempo, ter mais tranquilidade na sua rotina e ajudar no desenvolvimento das crianças com mais segurança e resultado, clique no botão abaixo e garanta agora o seu acesso ao alfabetização e letramento na prática.
+                  </p>
+                </div>
+              </div>
+            </wistia-player>
+          `
+        }}
+      />
     </div>
   );
 }
+

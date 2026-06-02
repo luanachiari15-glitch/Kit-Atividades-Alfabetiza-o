@@ -32,10 +32,10 @@ import {
   FAQ_ITEMS 
 } from './data';
 
-import WistiaPlayer from './components/WistiaPlayer';
 import CheckoutModal from './components/CheckoutModal';
 import UpgradeOfferModal from './components/UpgradeOfferModal';
 import TestimonialCarousel from './components/TestimonialCarousel';
+import WistiaPlayer from './components/WistiaPlayer';
 
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
@@ -165,6 +165,8 @@ export default function App() {
           <div className="mb-8 w-full">
             <WistiaPlayer />
           </div>
+
+
 
           {/* Fast social proof bar (icons) & badge placed below the video */}
           <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 mb-8">
@@ -315,68 +317,9 @@ export default function App() {
         </div>
 
         {/* Section divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#FAFAFA] fill-current">
-          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,20 C150,40 450,10 900,30 C1200,40 1350,20 1440,15 L1440,40 L0,40 Z"></path>
-          </svg>
-        </div>
-      </section>
-
-      {/* 5. O QUE VOCÊ RECEBE */}
-      <section className="bg-[#FAFAFA] py-10 relative">
-        <div className="max-w-4xl mx-auto px-4">
-          
-          <div className="text-center mb-10 fade-in-section">
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-orange-100 text-orange-800 uppercase tracking-widest mb-2.5 inline-block">
-                CONTEÚDO COMPLETO
-            </span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1">
-              Tudo que está esperando por você dentro do kit
-            </h2>
-          </div>
-
-          {/* Simulated Video Showcase of the modules */}
-          <div className="mb-12 fade-in-section max-w-3xl mx-auto relative group">
-            <div className="absolute inset-0 bg-slate-950 rounded-xl flex flex-col items-center justify-center p-4 sm:p-8 border-4 border-slate-800 shadow-xl relative aspect-[16/9] overflow-hidden">
-              {/* Retro decorative dots */}
-              <div className="absolute inset-0 bg-slate-950/40 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px]"></div>
-              
-              <div 
-                onClick={scrollToOffer}
-                className="relative z-10 text-center flex flex-col items-center justify-center h-full w-full cursor-pointer"
-              >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#22C55E] rounded-full flex items-center justify-center text-white border-4 border-white transition-transform duration-300 hover:scale-105 active:scale-95 shadow-md shadow-emerald-500/20">
-                  <span className="text-xl sm:text-2xl select-none ml-0.5">▶</span>
-                </div>
-                <h3 className="text-white text-sm sm:text-base font-black mt-4 tracking-tight leading-snug drop-shadow-md">
-                  ▶ Clique para ver por dentro — cada caderno, cada atividade
-                </h3>
-                <p className="text-slate-400 text-[10px] sm:text-xs font-bold mt-2 font-mono tracking-wider uppercase">
-                  SIMULE UMA VISUALIZAÇÃO rápida DO CADERNO DE EXERCÍCIOS
-                </p>
-              </div>
-            </div>
-          </div>
-
-
-
-          {/* Big CTA */}
-          <div className="text-center fade-in-section">
-            <button
-              id="cta-2"
-              onClick={scrollToOffer}
-              className="w-full max-w-lg bg-[#22C55E] hover:bg-[#1fbd59] text-white font-semibold text-sm sm:text-base tracking-wide rounded-[40px] py-3.5 px-6 sm:px-10 shadow-md hover:scale-102 cursor-pointer leading-none border-b-4 border-emerald-700 uppercase"
-            >
-              ⚡ QUERO O KIT COMPLETO AGORA
-            </button>
-          </div>
-
-        </div>
-
-        {/* Section divider */}
         <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#EFF6FF] fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,15 C250,5 650,35 1050,15 C1250,5 1370,25 1440,20 L1440,40 L0,40 Z"></path>
+            <path d="M0,20 C150,40 450,10 900,30 C1200,40 1350,20 1440,15 L1440,40 L0,40 Z"></path>
           </svg>
         </div>
       </section>
