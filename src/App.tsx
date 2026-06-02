@@ -32,7 +32,7 @@ import {
   FAQ_ITEMS 
 } from './data';
 
-import InteractiveVideoPlayer from './components/InteractiveVideoPlayer';
+import WistiaPlayer from './components/WistiaPlayer';
 import CheckoutModal from './components/CheckoutModal';
 import UpgradeOfferModal from './components/UpgradeOfferModal';
 import TestimonialCarousel from './components/TestimonialCarousel';
@@ -158,12 +158,12 @@ export default function App() {
             que ensinam sua criança a ler em até 40 dias <span className="block sm:inline text-slate-500 font-bold mt-2 sm:mt-0 text-[12px] sm:text-sm">(mesmo que você não seja professora)</span>
           </p>
 
-          {/* Interactive Player Presentation */}
+          {/* Wistia Video Presentation */}
           <p className="text-xs sm:text-sm text-[#F97316] font-extrabold tracking-wider mb-4 uppercase animate-pulse">
             👇 Assista o vídeo abaixo
           </p>
           <div className="mb-8 w-full">
-            <InteractiveVideoPlayer />
+            <WistiaPlayer />
           </div>
 
           {/* Fast social proof bar (icons) & badge placed below the video */}
