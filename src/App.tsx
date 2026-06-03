@@ -35,6 +35,7 @@ import {
 import CheckoutModal from './components/CheckoutModal';
 import UpgradeOfferModal from './components/UpgradeOfferModal';
 import TestimonialCarousel from './components/TestimonialCarousel';
+import WistiaPlayer from './components/WistiaPlayer';
 
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
@@ -156,6 +157,15 @@ export default function App() {
             </span>{' '}
             que ensinam sua criança a ler em até 40 dias <span className="block sm:inline text-slate-500 font-bold mt-2 sm:mt-0 text-[12px] sm:text-sm">(mesmo que você não seja professora)</span>
           </p>
+
+          {/* Video presentation section */}
+          <div className="mb-4 text-center">
+            <span className="inline-block bg-orange-100 text-orange-600 font-extrabold uppercase tracking-widest text-[10px] px-2.5 py-1 rounded-full animate-pulse border border-orange-200">
+              ⚡ Assista o vídeo abaixo
+            </span>
+          </div>
+
+          <WistiaPlayer />
 
           {/* Fast social proof bar (icons) & badge */}
           <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 mb-8">
