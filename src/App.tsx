@@ -503,27 +503,15 @@ export default function App() {
                     R$ 9,90
                   </span>
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider mt-2.5 bg-white px-2 py-0.5 rounded-full border border-slate-100">
-                    Acesso vitalício em PDF
+                    Arquivo Digital em PDF
                   </span>
                 </div>
 
                 {/* What is included checklist */}
                 <ul className="text-left space-y-3 mb-6">
                   <li className="flex items-start text-xs sm:text-sm font-medium text-slate-600">
-                    <span className="text-slate-400 mr-2 font-sans text-xs">✓</span>
-                    <span>2.500 Atividades Prontas</span>
-                  </li>
-                  <li className="flex items-start text-xs sm:text-sm font-medium text-slate-600">
-                    <span className="text-slate-400 mr-2 font-sans text-xs">✓</span>
-                    <span>Silabário Simples Completo</span>
-                  </li>
-                  <li className="flex items-start text-xs sm:text-sm font-medium text-slate-600">
-                    <span className="text-slate-400 mr-2 font-sans text-xs">✓</span>
-                    <span className="font-semibold text-slate-800">3 Bônus Exclusivos</span>
-                  </li>
-                  <li className="flex items-start text-xs sm:text-sm font-medium text-slate-600">
-                    <span className="text-slate-400 mr-2 font-sans text-xs">✓</span>
-                    <span>Acesso Vitalício em PDF</span>
+                    <span className="text-[#22C55E] mr-2 font-black text-xs">✓</span>
+                    <span className="font-semibold text-slate-800">2.500 Atividades Prontas</span>
                   </li>
                 </ul>
               </div>

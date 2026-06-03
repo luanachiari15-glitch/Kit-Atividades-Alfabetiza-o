@@ -55,7 +55,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage }: Chec
   const titleLabel = isPremium ? 'Pacote Premium Completo' : 'Pacote Básico de Alfabetização';
   const descLabel = isPremium 
     ? '+3.700 Atividades, Sílabas Simples + Complexas, 5 Bônus, Acesso Vitalício'
-    : '2.500 Atividades, Silabário Simples, Matemática, Caligrafia, 3 Bônus Exclusivos';
+    : 'Pacote com 2.500 Atividades Prontas em PDF';
 
   // Mock PIX keys representing the price
   const mockPixKey = isPremium
