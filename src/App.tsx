@@ -105,8 +105,10 @@ export default function App() {
     setOpenFaqId(openFaqId === id ? null : id);
   };
 
-  const openCheckout = (pkg: 'basico' | 'premium' = 'premium') => {
-    setSelectedPackage(pkg);
+  const openCheckout = (pkg: 'basico' | 'premium' | any = 'premium') => {
+    // If pkg is a React synthetic event or anything else besides 'basico' / 'premium', default to 'premium'
+    const finalPkg = (pkg === 'basico' || pkg === 'premium') ? pkg : 'premium';
+    setSelectedPackage(finalPkg);
     setIsCheckoutOpen(true);
   };
 
@@ -819,11 +821,11 @@ export default function App() {
 
           {/* Dummy visual footer links */}
           <div className="flex justify-center items-center gap-3 text-[10px] font-bold pt-2.5">
-            <button onClick={openCheckout} className="hover:text-white transition-colors cursor-pointer">Política de Privacidade</button>
+            <button onClick={() => openCheckout('premium')} className="hover:text-white transition-colors cursor-pointer">Política de Privacidade</button>
             <span>·</span>
-            <button onClick={openCheckout} className="hover:text-white transition-colors cursor-pointer">Termos de Uso</button>
+            <button onClick={() => openCheckout('premium')} className="hover:text-white transition-colors cursor-pointer">Termos de Uso</button>
             <span>·</span>
-            <button onClick={openCheckout} className="hover:text-white transition-colors cursor-pointer">Contato</button>
+            <button onClick={() => openCheckout('premium')} className="hover:text-white transition-colors cursor-pointer">Contato</button>
           </div>
 
         </div>
