@@ -35,7 +35,6 @@ import {
 import CheckoutModal from './components/CheckoutModal';
 import UpgradeOfferModal from './components/UpgradeOfferModal';
 import TestimonialCarousel from './components/TestimonialCarousel';
-import WistiaPlayer from './components/WistiaPlayer';
 
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
@@ -140,7 +139,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           
           {/* Main Title H1 */}
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-5.5xl xl:text-6xl font-extrabold leading-[1.12] tracking-tight font-sans text-balance mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight font-sans text-balance mb-6">
             <span className="block text-[#F97316] mb-1.5">
               Alfabetização do <br /> Zero à Leitura Fluente
             </span>
@@ -158,13 +157,7 @@ export default function App() {
             que ensinam sua criança a ler em até 40 dias <span className="block sm:inline text-slate-500 font-bold mt-2 sm:mt-0 text-[12px] sm:text-sm">(mesmo que você não seja professora)</span>
           </p>
 
-          <WistiaPlayer />
-
-
-
-
-
-          {/* Fast social proof bar (icons) & badge placed below the video */}
+          {/* Fast social proof bar (icons) & badge */}
           <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 mb-8">
             {/* Badge pill */}
             <div className="inline-flex items-center space-x-1.5 bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-full shadow-subtle transform hover:scale-102 transition-transform">
