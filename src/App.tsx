@@ -18,7 +18,16 @@ import {
   Calendar, 
   Award, 
   ArrowRight,
-  BookOpen
+  BookOpen,
+  FolderHeart,
+  Pencil,
+  Megaphone,
+  Type,
+  Puzzle,
+  PenTool,
+  Hash,
+  Palette,
+  Gift
 } from 'lucide-react';
 
 import { 
@@ -36,6 +45,81 @@ import CheckoutModal from './components/CheckoutModal';
 import UpgradeOfferModal from './components/UpgradeOfferModal';
 import TestimonialCarousel from './components/TestimonialCarousel';
 import WistiaPlayer from './components/WistiaPlayer';
+
+const RECEIVE_ITEMS = [
+  {
+    id: 'rec-1',
+    icon: FolderHeart,
+    title: '+3.700 Atividades Prontas para Imprimir',
+    description: 'Receba um enorme acervo de atividades organizadas para trabalhar leitura, escrita, interpretação e desenvolvimento infantil sem precisar criar materiais do zero.',
+    iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
+    borderAccent: 'border-t-blue-400',
+  },
+  {
+    id: 'rec-2',
+    icon: BookOpen,
+    title: 'Método Completo das Sílabas',
+    description: 'Atividades com sílabas simples e complexas (BRA, NHA, LHA, CHA, GUA e muito mais) para ajudar a criança a avançar na leitura de forma gradual e sem confusão.',
+    iconBg: 'bg-emerald-50 text-emerald-500 border-emerald-100',
+    borderAccent: 'border-t-emerald-400',
+  },
+  {
+    id: 'rec-3',
+    icon: Pencil,
+    title: 'Coordenação Motora do Básico ao Avançado',
+    description: 'Fortaleça o controle das mãos e desenvolva as habilidades essenciais para uma escrita mais firme, bonita e segura.',
+    iconBg: 'bg-orange-50 text-orange-500 border-orange-100',
+    borderAccent: 'border-t-orange-400',
+  },
+  {
+    id: 'rec-4',
+    icon: Megaphone,
+    title: 'Consciência Fonológica e Vogais',
+    description: 'Estimule a percepção dos sons das palavras, facilitando o reconhecimento das letras e acelerando o processo de alfabetização.',
+    iconBg: 'bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]',
+    borderAccent: 'border-t-amber-400',
+  },
+  {
+    id: 'rec-5',
+    icon: Type,
+    title: 'Alfabeto Silábico Completo',
+    description: 'Atividades organizadas de A a Z para reforçar o reconhecimento das letras, sílabas e primeiras leituras.',
+    iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
+    borderAccent: 'border-t-blue-400',
+  },
+  {
+    id: 'rec-6',
+    icon: Puzzle,
+    title: 'Formação de Palavras e Frases',
+    description: 'A criança aprende a unir sílabas, formar palavras e construir frases de maneira prática, divertida e progressiva.',
+    iconBg: 'bg-emerald-50 text-emerald-500 border-emerald-100',
+    borderAccent: 'border-t-emerald-400',
+  },
+  {
+    id: 'rec-7',
+    icon: PenTool,
+    title: 'Caligrafia Inicial e Cursiva',
+    description: 'Treinos que ajudam a desenvolver uma letra mais bonita, legível e organizada desde os primeiros passos da escrita.',
+    iconBg: 'bg-orange-50 text-orange-500 border-orange-100',
+    borderAccent: 'border-t-orange-400',
+  },
+  {
+    id: 'rec-8',
+    icon: Hash,
+    title: 'Matemática Divertida',
+    description: 'Atividades para trabalhar números, raciocínio lógico, operações básicas e conceitos matemáticos fundamentais.',
+    iconBg: 'bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]',
+    borderAccent: 'border-t-amber-400',
+  },
+  {
+    id: 'rec-9',
+    icon: Palette,
+    title: 'Artes e Ensino Religioso',
+    description: 'Materiais complementares para estimular criatividade, valores, expressão artística e desenvolvimento integral da criança.',
+    iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
+    borderAccent: 'border-t-blue-400',
+  }
+];
 
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
@@ -404,6 +488,59 @@ export default function App() {
         </div>
 
         {/* Section divider */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-slate-50 fill-current">
+          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
+            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* SEÇÃO INTEGRAL DE ENTREGÁVEIS */}
+      <section className="bg-slate-50 py-12 pb-20 relative">
+        <div className="max-w-6xl mx-auto px-4">
+          
+          <div className="text-center mb-12 fade-in-section">
+            <span className="text-3xl sm:text-4xl mb-2 inline-block">🎁</span>
+            <h2 className="text-2xl sm:text-3xl md:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
+              Tudo o que você recebe ao entrar hoje
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-medium mt-3 max-w-2xl mx-auto leading-relaxed">
+              Um acervo completo para transformar a alfabetização em uma experiência mais simples, divertida e eficiente.
+            </p>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {RECEIVE_ITEMS.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div 
+                  key={item.id}
+                  className={`bg-white rounded-2xl p-5 shadow-sm border-t-4 ${item.borderAccent} border-x border-b border-slate-100 hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between fade-in-section`}
+                >
+                  <div>
+                    {/* Flat Styled Icon Container */}
+                    <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl ${item.iconBg} border text-xl flex-shrink-0 mb-4 shadow-subtle`}>
+                      <IconComponent className="w-5.5 h-5.5" />
+                    </div>
+                    
+                    {/* Content details */}
+                    <h3 className="text-sm sm:text-base font-extrabold text-slate-950 tracking-tight leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 text-[11px] sm:text-xs md:text-sm font-medium mt-2 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+
+          </div>
+
+        </div>
+
+        {/* Section divider with background fill matching Bônus yellow */}
         <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#FFFBEB] fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
             <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
