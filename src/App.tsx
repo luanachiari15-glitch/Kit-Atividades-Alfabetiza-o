@@ -267,6 +267,68 @@ function OptimizedCardImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+function HeroMockup() {
+  return (
+    <div className="relative w-full max-w-[480px] h-[230px] min-[400px]:h-[270px] sm:h-[380px] lg:h-[480px] mx-auto flex items-center justify-center select-none mt-1 sm:mt-3 lg:mt-0">
+      {/* Glow lights */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-tr from-amber-200/30 to-blue-200/20 rounded-full blur-3xl pointer-events-none" />
+      
+      {/* Decorative Floating Sparkles & Elements */}
+      <div className="absolute top-4 left-6 text-2xl animate-bounce" style={{ animationDuration: '3.5s' }}>⭐</div>
+      <div className="absolute bottom-8 right-4 text-3xl animate-bounce" style={{ animationDuration: '4.5s' }}>🎈</div>
+      <div className="absolute top-1/2 -right-4 text-2xl animate-pulse">✨</div>
+      <div className="absolute bottom-12 -left-3 text-xl">✏️</div>
+
+      {/* Stack of Worksheets */}
+      {/* 1. Left tilted worksheet (Consciência Fonológica) */}
+      <div className="absolute left-[8%] sm:left-[10%] w-[48%] aspect-[3/4] bg-white rounded-xl shadow-xl border border-slate-100/90 overflow-hidden transform -rotate-12 hover:-rotate-3 hover:translate-y-[-10px] transition-all duration-500 origin-bottom-left group">
+        <img 
+          src="https://i.ibb.co/yFQt7k6W/Chat-GPT-Image-6-de-jun-de-2026-12-29-48.png" 
+          alt="Consciência Fonológica e Vogais" 
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-top"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      </div>
+
+      {/* 2. Right tilted worksheet (Método Completo das Sílabas) */}
+      <div className="absolute right-[8%] sm:right-[10%] w-[48%] aspect-[3/4] bg-white rounded-xl shadow-xl border border-slate-100/90 overflow-hidden transform rotate-12 hover:rotate-3 hover:translate-y-[-10px] transition-all duration-500 origin-bottom-right group">
+        <img 
+          src="https://i.ibb.co/XxpN3TPr/Chat-GPT-Image-6-de-jun-de-2026-12-14-05.png" 
+          alt="Método Completo das Sílabas" 
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-top"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      </div>
+
+      {/* 3. Center worksheet in front (3700 Atividades) */}
+      <div className="absolute w-[53%] aspect-[3/4] bg-white rounded-2xl shadow-2xl border-2 border-amber-300 overflow-hidden transform hover:scale-105 transition-all duration-500 z-10 group">
+        <img 
+          src="https://i.ibb.co/B2Fhgzsj/Chat-GPT-Image-6-de-jun-de-2026-12-01-31.png" 
+          alt="+3.700 Atividades Prontas" 
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-top"
+          loading="eager"
+        />
+        {/* Decorative Badge on Center Card */}
+        <div className="absolute top-2.5 right-2.5 bg-[#F97316] text-white font-black text-[9px] sm:text-[10px] px-2 py-0.5 rounded-md uppercase tracking-wider shadow-sm select-none border border-amber-400">
+          Mais Vendido ⭐
+        </div>
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      </div>
+
+      {/* Floating Sticker Stamp */}
+      <div className="absolute -bottom-2 right-[2%] sm:right-[8%] bg-amber-400 border-2 border-dashed border-amber-600 text-slate-950 font-black text-[10px] sm:text-xs leading-none uppercase px-3 py-2.5 rounded-full shadow-lg transform rotate-6 animate-pulse select-none z-20 flex flex-col items-center justify-center text-center">
+        <span>💡 100%</span>
+        <span>PRÁTICO</span>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
@@ -361,91 +423,137 @@ export default function App() {
       </div>
 
       {/* 1. HERO / HEADLINE PRINCIPAL */}
-      <section className="relative overflow-hidden pt-8 pb-12 bg-gradient-to-b from-blue-50/50 via-white to-white">
+      <section className="relative overflow-hidden pt-10 pb-16 lg:pt-16 lg:pb-22 bg-gradient-to-b from-blue-50/60 via-white to-white">
+        
+        {/* Decorative background ambient glows */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 left-0 w-80 h-80 bg-orange-100/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          
-          {/* Main Title H1 */}
-          <h1 className="font-sans tracking-tight mb-6">
-            <span className="block text-[#F97316] text-[26px] sm:text-[46px] md:text-[56px] lg:text-[66px] font-black uppercase leading-tight mb-2">
-              SEU FILHO NÃO PRECISA DE MAIS ATIVIDADES
-            </span>
-            <span className="block text-slate-950 text-[20px] sm:text-[36px] md:text-[46px] lg:text-[56px] font-black uppercase leading-none">
-              PRECISA DAS ATIVIDADES CERTAS!
-            </span>
-          </h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column (Copy and Action) */}
+            <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
+              
+              {/* Kit badge */}
+              <div className="flex items-center justify-center lg:justify-start mb-6">
+                <span className="inline-flex items-center gap-1.5 bg-orange-100 text-orange-600 font-extrabold uppercase tracking-widest text-[9px] sm:text-[10px] px-3.5 py-1.5 rounded-full border border-orange-200 shadow-sm animate-pulse">
+                  🔥 O Kit de Alfabetização Mais Completo do Brasil
+                </span>
+              </div>
 
-          {/* Subheadline */}
-          <div className="max-w-3xl mx-auto leading-relaxed mb-8 space-y-3">
-            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-semibold">
-              Receba acesso imediato a mais de <span className="text-[#F97316] font-extrabold">3.700 atividades organizadas por etapas</span> que ajudam crianças a desenvolver leitura, escrita e compreensão de forma divertida e progressiva.
-            </p>
-            <p className="text-[11px] sm:text-xs font-semibold text-slate-400">
-              Perfeito para mães e professoras que querem resultados reais sem precisar criar materiais do zero.
-            </p>
-          </div>
+              {/* Main Title H1 */}
+              <h1 className="tracking-tight mb-5 font-kids">
+                <span className="block text-[#F97316] text-[26px] sm:text-[44px] md:text-[52px] xl:text-[58px] font-black uppercase leading-tight mb-2">
+                  SEU FILHO NÃO PRECISA DE MAIS ATIVIDADES
+                </span>
+                <span 
+                  className="block text-[18px] sm:text-[34px] md:text-[40px] xl:text-[46px] font-black uppercase leading-none"
+                  aria-label="PRECISA DAS ATIVIDADES CERTAS!"
+                >
+                  {(() => {
+                    const playColors = [
+                      'text-[#FF5757]', // playful soft red
+                      'text-[#3B82F6]', // playful blue
+                      'text-[#22C55E]', // playful green
+                      'text-[#F59E0B]', // playful yellow/amber
+                      'text-[#EC4899]', // playful pink
+                      'text-[#8B5CF6]', // playful violet
+                      'text-[#06B6D4]', // playful cyan
+                    ];
+                    return "PRECISA DAS ATIVIDADES CERTAS!".split("").map((char, index) => {
+                      if (char === " ") return <span key={index}>&nbsp;</span>;
+                      const color = playColors[index % playColors.length];
+                      return (
+                        <span key={index} className={`${color} inline-block transform hover:scale-110 hover:-rotate-3 transition-transform duration-150 cursor-default`}>
+                          {char}
+                        </span>
+                      );
+                    });
+                  })()}
+                </span>
+              </h1>
 
-          {/* Video presentation section */}
-          <div className="mb-4 text-center">
-            <span className="inline-block bg-orange-100 text-orange-600 font-extrabold uppercase tracking-widest text-[10px] px-2.5 py-1 rounded-full animate-pulse border border-orange-200">
-              ⚡ Assista o vídeo abaixo
-            </span>
-          </div>
+              {/* Subheadline copy */}
+              <div className="max-w-3xl leading-relaxed mb-6">
+                <p className="text-slate-650 text-xs sm:text-sm md:text-base font-semibold">
+                  Receba acesso imediato a mais de <span className="text-[#F97316] font-extrabold">3.700 atividades organizadas por etapas</span> que ajudam crianças a desenvolver leitura, escrita e compreensão de forma divertida e progressiva.
+                </p>
+              </div>
 
-          <WistiaPlayer />
+              {/* Mockup for Mobile/Tablet - positioned between subheadline and benefits */}
+              <div className="block lg:hidden mt-1 mb-3">
+                <HeroMockup />
+              </div>
 
-          {/* Fast social proof bar (icons) & badge */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 mb-8">
-            {/* Badge pill */}
-            <div className="inline-flex items-center space-x-1.5 bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-full shadow-subtle transform hover:scale-102 transition-transform">
-              <span className="text-emerald-500 text-xs">✅</span>
-              <span className="text-slate-800 text-xs sm:text-sm font-black tracking-tight">
-                +8.000 mães e professoras já aprovaram
-              </span>
+              {/* Bullet points of instant benefits */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 max-w-sm sm:max-w-md mx-auto lg:mx-0 text-slate-700 font-bold text-[11px] sm:text-xs md:text-sm mb-7 text-left bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-slate-100 shadow-sm">
+                <div className="flex items-center space-x-2">
+                  <span className="text-emerald-500 font-black text-sm">✓</span>
+                  <span>+3.700 Atividades</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-emerald-500 font-black text-sm">✓</span>
+                  <span>Método Silábico Direto</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-emerald-500 font-black text-sm">✓</span>
+                  <span>Coordenação Motora</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-emerald-500 font-black text-sm">✓</span>
+                  <span>Pronto para Imprimir</span>
+                </div>
+              </div>
+
+              {/* Dynamic Badges Block */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-7">
+                {/* Badge pill */}
+                <div className="inline-flex items-center space-x-1.5 bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-full shadow-subtle transform hover:scale-102 transition-transform">
+                  <span className="text-emerald-500 text-xs">✅</span>
+                  <span className="text-slate-855 text-[10px] sm:text-xs font-black tracking-tight uppercase">
+                    +8.000 Mães e Professoras já aprovaram
+                  </span>
+                </div>
+
+                <div className="flex items-center space-x-1 font-bold text-slate-750">
+                  <span className="text-amber-400 text-sm">⭐⭐⭐⭐⭐</span>
+                  <span className="text-[11px] font-bold text-slate-400">(4.9/5 Nota)</span>
+                </div>
+              </div>
+
+              {/* Action Button & Secure info */}
+              <div className="flex flex-col items-center lg:items-start space-y-3.5">
+                <button
+                  id="cta-1"
+                  onClick={scrollToOffer}
+                  className="w-full max-w-md bg-[#22C55E] hover:bg-[#1fbd59] text-white font-extrabold text-xs sm:text-sm tracking-wide rounded-[40px] py-4 px-6 sm:px-8 shadow-lg hover:scale-102 hover:shadow-xl transition-all cursor-pointer select-none leading-none border-b-4 border-emerald-700 uppercase"
+                >
+                  ⚡ QUERO DEIXAR MEU FILHO FLUIDO NA LEITURA
+                </button>
+                <div className="flex items-center space-x-2.5 text-slate-400 font-bold text-[9px] sm:text-[10px] uppercase tracking-wider">
+                  <span className="flex items-center space-x-1">
+                    <Lock className="w-3 h-3 text-emerald-500" />
+                    <span>Pagamento 100% Seguro</span>
+                  </span>
+                  <span>•</span>
+                  <span>📥 Download Imediato</span>
+                </div>
+                
+                {/* Repositioned note text below CTA info */}
+                <p className="text-[11px] sm:text-xs font-semibold text-slate-400 max-w-sm text-center lg:text-left pt-1">
+                  Perfeito para mães e professoras que querem resultados reais sem precisar criar materiais do zero.
+                </p>
+              </div>
+
             </div>
 
-            {/* Fast social proof bar */}
-            <div className="grid grid-cols-2 md:flex md:items-center md:justify-center gap-2 md:gap-4 max-w-xl mx-auto w-full">
-              <div className="bg-white/80 border border-slate-100 rounded-lg px-3 py-2 flex items-center justify-center space-x-1 shadow-sm text-xs sm:text-sm font-bold text-slate-800">
-                <span className="text-amber-400 text-xs">⭐</span>
-                <span>4.9/5 Nota média</span>
-              </div>
-              <div className="bg-white/80 border border-slate-100 rounded-lg px-3 py-2 flex items-center justify-center space-x-1 shadow-sm text-xs sm:text-sm font-bold text-slate-800">
-                <span className="text-[#3B82F6] text-xs">👩👧</span>
-                <span>+8.000 famílias</span>
-              </div>
-              <div className="bg-white/80 border border-slate-100 rounded-lg px-3 py-2 flex items-center justify-center space-x-1 shadow-sm text-xs sm:text-sm font-bold text-slate-800">
-                <span className="text-emerald-500 text-xs">🛡️</span>
-                <span>Garantia 7 dias</span>
-              </div>
-              <div className="bg-white/80 border border-slate-100 rounded-lg px-3 py-2 flex items-center justify-center space-x-1 shadow-sm text-xs sm:text-sm font-bold text-slate-800">
-                <span className="text-orange-500 text-xs">⚡</span>
-                <span>Acesso imediato</span>
-              </div>
+            {/* Right Column (Visual Representation Mockup of Worksheet Stack) - Desktop Only */}
+            <div className="hidden lg:flex lg:col-span-5 items-center justify-center relative">
+              <HeroMockup />
             </div>
-          </div>
 
-          {/* Main CTA */}
-          <div className="flex flex-col items-center justify-center space-y-3.5">
-            <button
-              id="cta-1"
-              onClick={scrollToOffer}
-              className="w-full max-w-lg bg-[#22C55E] hover:bg-[#1fbd59] text-white font-semibold text-sm sm:text-base tracking-wide rounded-[40px] py-3.5 px-6 sm:px-10 shadow-md hover:scale-102 transition-all hover:shadow-lg cursor-pointer select-none leading-none border-b-4 border-emerald-700 uppercase"
-            >
-              ⚡ SIM! QUERO COMEÇAR AGORA — COM DESCONTO
-            </button>
-            <div className="flex items-center space-x-3 text-slate-400 font-bold text-[10px] sm:text-xs uppercase tracking-wider mt-1.5">
-              <span className="flex items-center space-x-1">
-                <Lock className="w-3 h-3 text-emerald-500" />
-                <span>Pagamento seguro</span>
-              </span>
-              <span>•</span>
-              <span>📥 Acesso imediato</span>
-              <span>•</span>
-              <span>🛡️ Garantia de 7 dias</span>
-            </div>
           </div>
-
         </div>
 
         {/* Section divider wave */}
