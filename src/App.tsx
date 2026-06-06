@@ -55,7 +55,7 @@ const RECEIVE_ITEMS = [
     description: 'Receba um enorme acervo de atividades organizadas para trabalhar leitura, escrita, interpretação e desenvolvimento infantil sem precisar criar materiais do zero.',
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
-    image: 'https://i.ibb.co/Zz7QhLTK/Chat-GPT-Image-6-de-jun-de-2026-12-01-31.png',
+    image: 'https://i.ibb.co/B2Fhgzsj/Chat-GPT-Image-6-de-jun-de-2026-12-01-31.png',
   },
   {
     id: 'rec-2',
@@ -64,7 +64,7 @@ const RECEIVE_ITEMS = [
     description: 'Atividades com sílabas simples e complexas (BRA, NHA, LHA, CHA, GUA e muito mais) para ajudar a criança a avançar na leitura de forma gradual e sem confusão.',
     iconBg: 'bg-emerald-50 text-emerald-500 border-emerald-100',
     borderAccent: 'border-t-emerald-400',
-    image: 'https://i.ibb.co/Sw0Wdpg4/Chat-GPT-Image-6-de-jun-de-2026-12-14-05.png',
+    image: 'https://i.ibb.co/XxpN3TPr/Chat-GPT-Image-6-de-jun-de-2026-12-14-05.png',
   },
   {
     id: 'rec-3',
@@ -73,7 +73,7 @@ const RECEIVE_ITEMS = [
     description: 'Fortaleça o controle das mãos e desenvolva as habilidades essenciais para uma escrita mais firme, bonita e segura.',
     iconBg: 'bg-orange-50 text-orange-500 border-orange-100',
     borderAccent: 'border-t-orange-400',
-    image: 'https://i.ibb.co/R4pVbdVX/Chat-GPT-Image-6-de-jun-de-2026-12-13-56.png',
+    image: 'https://i.ibb.co/Nn6HCbH0/Chat-GPT-Image-6-de-jun-de-2026-12-13-56.png',
   },
   {
     id: 'rec-4',
@@ -82,7 +82,7 @@ const RECEIVE_ITEMS = [
     description: 'Estimule a percepção dos sons das palavras, facilitando o reconhecimento das letras e acelerando o processo de alfabetização.',
     iconBg: 'bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]',
     borderAccent: 'border-t-amber-400',
-    image: 'https://i.ibb.co/jkrmswyg/Chat-GPT-Image-6-de-jun-de-2026-12-29-48.png',
+    image: 'https://i.ibb.co/yFQt7k6W/Chat-GPT-Image-6-de-jun-de-2026-12-29-48.png',
   },
   {
     id: 'rec-5',
@@ -91,7 +91,7 @@ const RECEIVE_ITEMS = [
     description: 'Atividades organizadas de A a Z para reforçar o reconhecimento das letras, sílabas e primeiras leituras.',
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
-    image: 'https://i.ibb.co/Kjwfhnyk/Chat-GPT-Image-6-de-jun-de-2026-12-29-56.png',
+    image: 'https://i.ibb.co/d0gVMZKq/Chat-GPT-Image-6-de-jun-de-2026-12-29-56.png',
   },
   {
     id: 'rec-6',
@@ -100,7 +100,7 @@ const RECEIVE_ITEMS = [
     description: 'A criança aprende a unir sílabas, formar palavras e construir frases de maneira prática, divertida e progressiva.',
     iconBg: 'bg-emerald-50 text-emerald-500 border-emerald-100',
     borderAccent: 'border-t-emerald-400',
-    image: 'https://i.ibb.co/6JDdGw8b/Chat-GPT-Image-6-de-jun-de-2026-12-14-12.png',
+    image: 'https://i.ibb.co/G3ChGp9k/Chat-GPT-Image-6-de-jun-de-2026-12-14-12.png',
   },
   {
     id: 'rec-7',
@@ -109,7 +109,7 @@ const RECEIVE_ITEMS = [
     description: 'Treinos que ajudam a desenvolver uma letra mais bonita, legível e organizada desde os primeiros passos da escrita.',
     iconBg: 'bg-orange-50 text-orange-500 border-orange-100',
     borderAccent: 'border-t-orange-400',
-    image: 'https://i.ibb.co/Q7sX8rxN/Chat-GPT-Image-6-de-jun-de-2026-12-14-19.png',
+    image: 'https://i.ibb.co/RGL7hzJ0/Chat-GPT-Image-6-de-jun-de-2026-12-14-19.png',
   },
   {
     id: 'rec-8',
@@ -118,7 +118,7 @@ const RECEIVE_ITEMS = [
     description: 'Atividades para trabalhar números, raciocínio lógico, operações básicas e conceitos matemáticos fundamentais.',
     iconBg: 'bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]',
     borderAccent: 'border-t-amber-400',
-    image: 'https://i.ibb.co/QvhQJZDs/Chat-GPT-Image-6-de-jun-de-2026-12-14-28.png',
+    image: 'https://i.ibb.co/KxBh5YKC/Chat-GPT-Image-6-de-jun-de-2026-12-14-28.png',
   },
   {
     id: 'rec-9',
@@ -127,7 +127,7 @@ const RECEIVE_ITEMS = [
     description: 'Materiais complementares para estimular criatividade, valores, expression artística e desenvolvimento integral da criança.',
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
-    image: 'https://i.ibb.co/s7XqjYH/Chat-GPT-Image-6-de-jun-de-2026-12-32-40.png',
+    image: 'https://i.ibb.co/h0TVszf/Chat-GPT-Image-6-de-jun-de-2026-12-32-40.png',
   }
 ];
 
@@ -238,6 +238,34 @@ const CATEGORY_CARDS = [
     gradient: "from-amber-400 to-yellow-400"
   }
 ];
+
+function OptimizedCardImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div className="overflow-hidden border-b border-slate-100 bg-slate-50 flex items-center justify-center h-[210px] sm:h-[245px] w-full relative">
+      {/* Premium Shimmer Skeleton Element */}
+      {!loaded && (
+        <div className="absolute inset-0 bg-slate-100/80 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-200/40 to-slate-100 animate-pulse" />
+          <svg className="w-10 h-10 text-slate-300 animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+      )}
+      <img 
+        src={src} 
+        alt={alt} 
+        referrerPolicy="no-referrer"
+        onLoad={() => setLoaded(true)}
+        className={`w-full h-full object-cover object-top transition-all duration-750 hover:scale-[1.04] ${
+          loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-[0.97] blur-sm'
+        }`}
+        loading="lazy"
+      />
+    </div>
+  );
+}
 
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
@@ -453,15 +481,10 @@ export default function App() {
                   <div className="flex flex-col h-full">
                     {/* Card Cover Image */}
                     {item.image && (
-                      <div className="overflow-hidden border-b border-slate-100 bg-slate-50 flex items-center justify-center h-[210px] sm:h-[245px] w-full relative">
-                        <img 
-                          src={item.image} 
-                          alt={item.title} 
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-[1.04]"
-                          loading="lazy"
-                        />
-                      </div>
+                      <OptimizedCardImage 
+                        src={item.image} 
+                        alt={item.title} 
+                      />
                     )}
                     
                     {/* Card Content (Title and Description) */}
