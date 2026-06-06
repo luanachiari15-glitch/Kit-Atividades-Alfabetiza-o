@@ -476,7 +476,7 @@ export default function App() {
 
               {/* Subheadline copy */}
               <div className="max-w-3xl leading-relaxed mb-6">
-                <p className="text-slate-650 text-xs sm:text-sm md:text-base font-semibold">
+                <p className="text-slate-650 text-[14px] sm:text-sm md:text-base font-medium leading-relaxed">
                   Receba acesso imediato a mais de <span className="text-[#F97316] font-extrabold">3.700 atividades organizadas por etapas</span> que ajudam crianças a desenvolver leitura, escrita e compreensão de forma divertida e progressiva.
                 </p>
               </div>
@@ -487,7 +487,7 @@ export default function App() {
               </div>
 
               {/* Bullet points of instant benefits */}
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 max-w-sm sm:max-w-md mx-auto lg:mx-0 text-slate-700 font-bold text-[11px] sm:text-xs md:text-sm mb-7 text-left bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-slate-100 shadow-sm">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 max-w-sm sm:max-w-md mx-auto lg:mx-0 text-slate-700 font-bold text-[13px] sm:text-xs md:text-sm mb-7 text-left bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-slate-100 shadow-sm">
                 <div className="flex items-center space-x-2">
                   <span className="text-emerald-500 font-black text-sm">✓</span>
                   <span>+3.700 Atividades</span>
@@ -511,7 +511,7 @@ export default function App() {
                 {/* Badge pill */}
                 <div className="inline-flex items-center space-x-1.5 bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-full shadow-subtle transform hover:scale-102 transition-transform">
                   <span className="text-emerald-500 text-xs">✅</span>
-                  <span className="text-slate-855 text-[10px] sm:text-xs font-black tracking-tight uppercase">
+                  <span className="text-slate-855 text-[12px] sm:text-xs font-black tracking-tight uppercase">
                     +8.000 Mães e Professoras já aprovaram
                   </span>
                 </div>
@@ -527,11 +527,11 @@ export default function App() {
                 <button
                   id="cta-1"
                   onClick={scrollToOffer}
-                  className="w-full max-w-md bg-[#22C55E] hover:bg-[#1fbd59] text-white font-extrabold text-xs sm:text-sm tracking-wide rounded-[40px] py-4 px-6 sm:px-8 shadow-lg hover:scale-102 hover:shadow-xl transition-all cursor-pointer select-none leading-none border-b-4 border-emerald-700 uppercase"
+                  className="w-full max-w-md bg-[#22C55E] hover:bg-[#1fbd59] text-white font-extrabold text-[13.5px] sm:text-sm tracking-wide rounded-[40px] py-4 px-6 sm:px-8 shadow-lg hover:scale-102 hover:shadow-xl transition-all cursor-pointer select-none leading-none border-b-4 border-emerald-700 uppercase"
                 >
                   ⚡ QUERO DEIXAR MEU FILHO FLUIDO NA LEITURA
                 </button>
-                <div className="flex items-center space-x-2.5 text-slate-400 font-bold text-[9px] sm:text-[10px] uppercase tracking-wider">
+                <div className="flex items-center space-x-2.5 text-slate-400 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
                   <span className="flex items-center space-x-1">
                     <Lock className="w-3 h-3 text-emerald-500" />
                     <span>Pagamento 100% Seguro</span>
@@ -541,7 +541,7 @@ export default function App() {
                 </div>
                 
                 {/* Repositioned note text below CTA info */}
-                <p className="text-[11px] sm:text-xs font-semibold text-slate-400 max-w-sm text-center lg:text-left pt-1">
+                <p className="text-[13px] sm:text-xs font-semibold text-slate-400 max-w-sm text-center lg:text-left pt-1">
                   Perfeito para mães e professoras que querem resultados reais sem precisar criar materiais do zero.
                 </p>
               </div>
@@ -597,10 +597,10 @@ export default function App() {
                     
                     {/* Card Content (Title and Description) */}
                     <div className="p-5 flex flex-col gap-2">
-                      <h3 className="text-sm sm:text-base font-extrabold text-slate-950 tracking-tight leading-snug">
+                      <h3 className="text-[15px] sm:text-base font-extrabold text-slate-950 tracking-tight leading-snug">
                         {item.title}
                       </h3>
-                      <p className="text-slate-600 text-[11px] sm:text-xs md:text-sm font-medium leading-relaxed">
+                      <p className="text-slate-650 text-[13px] sm:text-xs md:text-sm font-normal leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -621,55 +621,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 4. PARA QUEM É */}
-      <section className="bg-white py-10 relative">
-        <div className="max-w-3xl mx-auto px-4">
-          
-          <div className="text-center mb-10 fade-in-section">
-            <span className="text-2xl">🎯</span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-3">
-              Este kit foi feito EXATAMENTE para você se...
-            </h2>
-          </div>
 
-          {/* Check grid */}
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-5 mb-10">
-            {AUDIENCE_ITEMS.map((item) => (
-              <div 
-                key={item.id}
-                className="flex items-start bg-[#EFF6FF] border border-blue-100 p-3.5 rounded-lg shadow-subtle hover:shadow-md transition-shadow duration-200 fade-in-section"
-              >
-                <div className="bg-[#3B82F6] text-white rounded-full p-1 mr-2.5 flex-shrink-0 mt-0.5">
-                  <Check className="w-3.5 h-3.5" />
-                </div>
-                <span className="text-slate-800 text-sm sm:text-base font-medium leading-snug">
-                  {item.text}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Attention Card */}
-          <div className="bg-[#FFFBEB] border-l-4 border-l-[#FBBF24] rounded-r-lg p-5 shadow-sm max-w-lg mx-auto mt-6 fade-in-section">
-            <div className="flex items-start space-x-2.5">
-              <span className="text-xl select-none flex-shrink-0">⚠️</span>
-              <div>
-                <p className="text-xs sm:text-sm font-medium text-slate-600 leading-relaxed">
-                  <strong className="text-slate-950">Não é para você se:</strong> só quer "dar uma olhada" sem aplicar. Este kit é para quem está pronta para ver a criança lendo em até 30 dias.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Section divider transitioning to SEÇÃO 1 (Sua Transformação) with bg-slate-50 */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-slate-50 fill-current">
-          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,20 C150,40 450,10 900,30 C1200,40 1350,20 1440,15 L1440,40 L0,40 Z"></path>
-          </svg>
-        </div>
-      </section>
 
       {/* SEÇÃO 1 — SUA TRANSFORMAÇÃO */}
       <section className="bg-white py-16 relative">
@@ -697,26 +649,26 @@ export default function App() {
                 {/* Lado Esquerdo (Situação Anterior) */}
                 <div className="flex items-center space-x-2.5 sm:space-x-3 w-[45%] flex-shrink-0">
                   {/* Círculo Vermelho com X */}
-                  <div className="w-5.5 h-5.5 sm:w-7.5 sm:h-7.5 rounded-full bg-red-50 border border-red-100 text-red-400 flex items-center justify-center font-bold text-[10px] sm:text-xs flex-shrink-0">
+                  <div className="w-6 h-6 sm:w-7.5 sm:h-7.5 rounded-full bg-red-50 border border-red-100 text-red-400 flex items-center justify-center font-bold text-[11px] sm:text-xs flex-shrink-0">
                     ✕
                   </div>
-                  <span className="text-slate-400 text-[10px] sm:text-[13px] md:text-sm font-semibold line-through leading-snug tracking-tight">
+                  <span className="text-slate-400 text-[12px] sm:text-[13px] md:text-sm font-semibold line-through leading-snug tracking-tight">
                     {pair.before}
                   </span>
                 </div>
 
                 {/* Setinha Azul Central */}
-                <div className="text-blue-500 text-xs sm:text-lg font-black flex-shrink-0 px-0.5">
+                <div className="text-blue-500 text-sm sm:text-lg font-black flex-shrink-0 px-0.5">
                   →
                 </div>
 
                 {/* Lado Direito (Nova Rotina Elegante) */}
                 <div className="flex items-center space-x-2.5 sm:space-x-3 w-[50%] flex-shrink-0">
                   {/* Círculo Verde com Check */}
-                  <div className="w-5.5 h-5.5 sm:w-7.5 sm:h-7.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-500 flex items-center justify-center font-bold text-[10px] sm:text-xs flex-shrink-0">
+                  <div className="w-6 h-6 sm:w-7.5 sm:h-7.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-500 flex items-center justify-center font-bold text-[11px] sm:text-xs flex-shrink-0">
                     ✓
                   </div>
-                  <span className="text-slate-950 text-[10px] sm:text-[13px] md:text-sm font-extrabold leading-snug tracking-tight">
+                  <span className="text-slate-950 text-[12px] sm:text-[13px] md:text-sm font-extrabold leading-snug tracking-tight">
                     {pair.after}
                   </span>
                 </div>
@@ -732,7 +684,7 @@ export default function App() {
               <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
                 📚
               </span>
-              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+              <span className="text-[10.5px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
                 AULAS DINÂMICAS
               </span>
             </div>
@@ -742,7 +694,7 @@ export default function App() {
               <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
                 ⏰
               </span>
-              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+              <span className="text-[10.5px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
                 ECONOMIA DE TEMPO
               </span>
             </div>
@@ -752,7 +704,7 @@ export default function App() {
               <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
                 🎯
               </span>
-              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+              <span className="text-[10.5px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
                 ALUNOS ENGAJADOS
               </span>
             </div>
@@ -762,7 +714,7 @@ export default function App() {
               <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
                 ✨
               </span>
-              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+              <span className="text-[10.5px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
                 RESULTADOS VISÍVEIS
               </span>
             </div>
@@ -779,82 +731,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* SEÇÃO — TUDO O QUE VOCÊ PRECISA EM UM SÓ LUGAR (NOVA VERSÃO SIMPLIFICADA) */}
-      <section className="bg-white py-16 relative">
-        <div className="max-w-5xl mx-auto px-4">
-          
-          <div className="text-center mb-12 fade-in-section">
-            <span className="text-3xl sm:text-4xl mb-2 inline-block">🚀</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-              Tudo o que você precisa em um só lugar
-            </h2>
-            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-medium mt-3 max-w-xl mx-auto leading-relaxed">
-              O suporte completo para guiar e acelerar a alfabetização da criança, com total segurança e praticidade.
-            </p>
-          </div>
 
-          {/* Simple Cards Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-5xl mx-auto">
-            
-            {/* CARD 1: +3.700 Dinâmicas e atividades prontas */}
-            <div className="bg-orange-50/45 rounded-2xl p-4 sm:p-6 border border-orange-100 hover:border-orange-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
-              <div className="flex flex-col items-center">
-                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-orange-100 text-orange-600 border border-orange-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
-                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
-                  +3.700 Dinâmicas e atividades prontas
-                </h3>
-              </div>
-            </div>
-
-            {/* CARD 2: Acesso vitalício */}
-            <div className="bg-amber-50/45 rounded-2xl p-4 sm:p-6 border border-amber-100 hover:border-amber-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
-              <div className="flex flex-col items-center">
-                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-amber-100 text-amber-600 border border-amber-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
-                  <Infinity className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
-                  Acesso vitalício
-                </h3>
-              </div>
-            </div>
-
-            {/* CARD 3: Atualizações semanais */}
-            <div className="bg-emerald-50/45 rounded-2xl p-4 sm:p-6 border border-emerald-100 hover:border-emerald-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
-              <div className="flex flex-col items-center">
-                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-emerald-100 text-emerald-600 border border-emerald-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
-                  <RefreshCw className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
-                  Atualizações semanais
-                </h3>
-              </div>
-            </div>
-
-            {/* CARD 4: Garantia de 7 dias */}
-            <div className="bg-blue-50/45 rounded-2xl p-4 sm:p-6 border border-blue-100 hover:border-blue-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
-              <div className="flex flex-col items-center">
-                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-blue-100 text-blue-600 border border-blue-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
-                  <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
-                  Garantia de 7 dias
-                </h3>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* Section divider wrapping into the next section (bg-white) */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
-          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
-          </svg>
-        </div>
-      </section>
 
       {/* 7. DEPOIMENTOS */}
       <section className="bg-white py-10 relative">
@@ -864,7 +741,7 @@ export default function App() {
             <span className="px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-800 uppercase tracking-widest mb-2.5 inline-block">
               QUEM COMPROU, APROVA
             </span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1">
               O que as mães e professoras estão dizendo
             </h2>
             <p className="text-slate-500 text-sm sm:text-base font-normal mt-1.5">
@@ -875,6 +752,28 @@ export default function App() {
           {/* Testimonials Frame Row Slider */}
           <div className="fade-in-section">
             <TestimonialCarousel />
+          </div>
+
+          {/* Testimonial Premium CTA Button */}
+          <div className="mt-10 flex flex-col items-center justify-center space-y-3.5 fade-in-section">
+            <a
+              href="https://pay.wiapy.com/fCZTb1cH9V"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-md inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-extrabold text-[13px] sm:text-sm tracking-wide rounded-[40px] py-4 px-6 sm:px-8 shadow-lg hover:scale-102 hover:shadow-xl transition-all cursor-pointer select-none leading-none border-b-4 border-emerald-700 uppercase text-center"
+            >
+              ⚡ QUERO O KIT PREMIUM COM TODOS OS BÔNUS — APENAS R$ 27
+            </a>
+            <div className="flex items-center space-x-2.5 text-slate-400 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
+              <span className="flex items-center space-x-1">
+                <Lock className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Compra 100% Segura</span>
+              </span>
+              <span>•</span>
+              <span>📥 Envio Imediato</span>
+              <span>•</span>
+              <span>🛡️ 7 Dias de Garantia</span>
+            </div>
           </div>
 
         </div>
@@ -888,60 +787,252 @@ export default function App() {
       </section>
 
       {/* 8. BÔNUS */}
-      <section className="bg-[#FFFBEB] py-10 relative">
-        <div className="max-w-4xl mx-auto px-4">
+      <section className="bg-[#FAF8F2] py-14 sm:py-16 md:py-20 relative overflow-hidden">
+        {/* Glow effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-amber-200/20 rounded-full blur-3xl pointer-events-none z-0" />
+        
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
           
-          <div className="text-center mb-11 fade-in-section">
-            <span className="text-2xl">🎁</span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-2">
-              Comprando hoje, você leva esses bônus GRÁTIS
+          <div className="text-center mb-12 sm:mb-14 fade-in-section">
+            <span className="inline-flex items-center gap-1.5 bg-rose-100 text-rose-650 font-extrabold uppercase tracking-widest text-[10px] sm:text-[11px] px-3.5 py-1.5 rounded-full border border-rose-200 shadow-sm mb-4 leading-none select-none">
+              🔥 SUPER OFERTA DE HOJE
+            </span>
+            <h2 className="text-2xl sm:text-3.5xl md:text-3.5xl font-kids text-slate-950 tracking-tight leading-tight max-w-3xl mx-auto">
+              🎁 E HOJE VOCÊ AINDA RECEBE <span className="text-[#F97316]">5 BÔNUS EXCLUSIVOS GRÁTIS</span>
             </h2>
+            <p className="text-slate-600 text-sm sm:text-base font-medium mt-3.5 max-w-2xl mx-auto leading-relaxed">
+              Materiais complementares que aceleram o aprendizado da criança e ajudam pais e professores a economizar ainda mais tempo.
+            </p>
           </div>
 
-          {/* Bonus list in cards */}
-          <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mb-11">
-            {BONUS_ITEMS.map((item, idx) => (
-              <div 
-                key={item.id}
-                className="bg-white rounded-xl p-4.5 shadow-sm border border-amber-200/50 hover:shadow-md transition-all relative overflow-hidden flex items-start space-x-3 fade-in-section"
-              >
-                {/* Giant Red "GRÁTIS" Badge */}
-                <div className="absolute top-2 right-2 bg-red-500 text-white font-black text-[8px] uppercase tracking-wider px-1.5 py-0.5 rounded-full leading-none">
-                  GRÁTIS
-                </div>
-
-                <div className="bg-amber-100 text-amber-700 rounded-xl p-2.5 text-2xl flex-shrink-0">
-                  {item.icon}
-                </div>
-
-                <div>
-                  <h4 className="text-sm sm:text-base font-bold text-slate-950 tracking-tight mt-0.5">
-                    {item.title}
-                  </h4>
-                  <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed mt-2 max-w-sm">
-                    {item.subtitle}
-                  </p>
-                  
-                  {/* Badge pricing detail */}
-                  <span className="inline-block mt-3.5 bg-red-100 text-red-700 text-[10px] sm:text-xs font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-red-200 leading-none">
-                    {item.badgeValue}
+          {/* Bonus list in big professional cards */}
+          <div className="grid grid-cols-2 gap-3.5 sm:gap-6 md:gap-8 mb-12 sm:mb-14">
+            
+            {/* BÔNUS #1 */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group fade-in-section">
+              {/* Corner Value Badge */}
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[8px] sm:text-xs uppercase tracking-wider px-2 py-1 rounded-bl-lg sm:rounded-bl-xl shadow-sm z-10 leading-none">
+                GRÁTIS
+              </div>
+              
+              <div>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 mb-2 sm:mb-4">
+                  <span className="text-[9px] sm:text-xs font-black uppercase text-amber-600 tracking-widest bg-amber-50 px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-100 font-display w-fit">
+                    🎁 BÔNUS #1
+                  </span>
+                  <span className="text-slate-400 text-[10px] sm:text-sm font-bold line-through mr-0 xs:mr-8 sm:mr-16">
+                    R$27
                   </span>
                 </div>
+                
+                <h3 className="text-xs sm:text-lg md:text-xl font-extrabold text-slate-950 tracking-tight mt-1 sm:mt-2 font-display leading-tight">
+                  Caderno Completo de Coordenação Motora
+                </h3>
+                
+                <p className="text-slate-650 text-[11px] sm:text-[14.5px] font-normal leading-snug sm:leading-relaxed mt-2 sm:mt-3.5">
+                  Ajude a criança a desenvolver firmeza nas mãos, coordenação e preparação para a escrita através de exercícios divertidos e progressivos.
+                </p>
               </div>
-            ))}
+
+              <div className="mt-4 pt-3 border-t border-slate-50 flex flex-col xs:flex-row items-center justify-between gap-1.5">
+                <span className="text-[#22C55E] font-black text-[9px] sm:text-sm flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5 flex-shrink-0" /> Incluso
+                </span>
+                <span className="text-[#22C55E] font-sans font-black text-[9px] sm:text-sm uppercase tracking-wider bg-emerald-50 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded">
+                  R$ 0,00
+                </span>
+              </div>
+            </div>
+
+            {/* BÔNUS #2 */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group fade-in-section">
+              {/* Corner Value Badge */}
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[8px] sm:text-xs uppercase tracking-wider px-2 py-1 rounded-bl-lg sm:rounded-bl-xl shadow-sm z-10 leading-none">
+                GRÁTIS
+              </div>
+              
+              <div>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 mb-2 sm:mb-4">
+                  <span className="text-[9px] sm:text-xs font-black uppercase text-amber-600 tracking-widest bg-amber-50 px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-100 font-display w-fit">
+                    🎁 BÔNUS #2
+                  </span>
+                  <span className="text-slate-400 text-[10px] sm:text-sm font-bold line-through mr-0 xs:mr-8 sm:mr-16">
+                    R$19
+                  </span>
+                </div>
+                
+                <h3 className="text-xs sm:text-lg md:text-xl font-extrabold text-slate-950 tracking-tight mt-1 sm:mt-2 font-display leading-tight">
+                  100 Atividades de Recorte e Colagem
+                </h3>
+                
+                <p className="text-slate-650 text-[11px] sm:text-[14.5px] font-normal leading-snug sm:leading-relaxed mt-2 sm:mt-3.5">
+                  Atividades lúdicas para estimular atenção, coordenação motora fina e desenvolvimento cognitivo.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-50 flex flex-col xs:flex-row items-center justify-between gap-1.5">
+                <span className="text-[#22C55E] font-black text-[9px] sm:text-sm flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5 flex-shrink-0" /> Incluso
+                </span>
+                <span className="text-[#22C55E] font-sans font-black text-[9px] sm:text-sm uppercase tracking-wider bg-emerald-50 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded">
+                  R$ 0,00
+                </span>
+              </div>
+            </div>
+
+            {/* BÔNUS #3 */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group fade-in-section">
+              {/* Corner Value Badge */}
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[8px] sm:text-xs uppercase tracking-wider px-2 py-1 rounded-bl-lg sm:rounded-bl-xl shadow-sm z-10 leading-none">
+                GRÁTIS
+              </div>
+              
+              <div>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 mb-2 sm:mb-4">
+                  <span className="text-[9px] sm:text-xs font-black uppercase text-amber-600 tracking-widest bg-amber-50 px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-100 font-display w-fit">
+                    🎁 BÔNUS #3
+                  </span>
+                  <span className="text-slate-400 text-[10px] sm:text-sm font-bold line-through mr-0 xs:mr-8 sm:mr-16">
+                    R$17
+                  </span>
+                </div>
+                
+                <h3 className="text-xs sm:text-lg md:text-xl font-extrabold text-slate-950 tracking-tight mt-1 sm:mt-2 font-display leading-tight">
+                  Caderno de Pintura Educativa
+                </h3>
+                
+                <p className="text-slate-650 text-[11px] sm:text-[14.5px] font-normal leading-snug sm:leading-relaxed mt-2 sm:mt-3.5">
+                  Desenhos e atividades que reforçam o aprendizado enquanto a criança se diverte.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-50 flex flex-col xs:flex-row items-center justify-between gap-1.5">
+                <span className="text-[#22C55E] font-black text-[9px] sm:text-sm flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5 flex-shrink-0" /> Incluso
+                </span>
+                <span className="text-[#22C55E] font-sans font-black text-[9px] sm:text-sm uppercase tracking-wider bg-emerald-50 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded">
+                  R$ 0,00
+                </span>
+              </div>
+            </div>
+
+            {/* BÔNUS #4 */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group fade-in-section">
+              {/* Corner Value Badge */}
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[8px] sm:text-xs uppercase tracking-wider px-2 py-1 rounded-bl-lg sm:rounded-bl-xl shadow-sm z-10 leading-none">
+                GRÁTIS
+              </div>
+              
+              <div>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 mb-2 sm:mb-4">
+                  <span className="text-[9px] sm:text-xs font-black uppercase text-amber-600 tracking-widest bg-amber-50 px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-100 font-display w-fit">
+                    🎁 BÔNUS #4
+                  </span>
+                  <span className="text-slate-400 text-[10px] sm:text-sm font-bold line-through mr-0 xs:mr-8 sm:mr-16">
+                    R$47
+                  </span>
+                </div>
+                
+                <h3 className="text-xs sm:text-lg md:text-xl font-extrabold text-slate-950 tracking-tight mt-1 sm:mt-2 font-display leading-tight">
+                  Acesso Vitalício e Atualizações Futuras
+                </h3>
+                
+                <p className="text-slate-650 text-[11px] sm:text-[14.5px] font-normal leading-snug sm:leading-relaxed mt-2 sm:mt-3.5">
+                  Receba novas atividades adicionadas ao acervo sem pagar novamente.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-50 flex flex-col xs:flex-row items-center justify-between gap-1.5">
+                <span className="text-[#22C55E] font-black text-[9px] sm:text-sm flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5 flex-shrink-0" /> Incluso
+                </span>
+                <span className="text-[#22C55E] font-sans font-black text-[9px] sm:text-sm uppercase tracking-wider bg-emerald-50 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded">
+                  R$ 0,00
+                </span>
+              </div>
+            </div>
+
+            {/* BÔNUS #5 */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group col-span-2 md:col-span-1 md:max-w-none fade-in-section">
+              {/* Corner Value Badge */}
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[8px] sm:text-xs uppercase tracking-wider px-2 py-1 rounded-bl-lg sm:rounded-bl-xl shadow-sm z-10 leading-none">
+                GRÁTIS
+              </div>
+              
+              <div>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 mb-2 sm:mb-4">
+                  <span className="text-[9px] sm:text-xs font-black uppercase text-amber-600 tracking-widest bg-amber-50 px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-100 font-display w-fit">
+                    🎁 BÔNUS #5
+                  </span>
+                  <span className="text-slate-400 text-[10px] sm:text-sm font-bold line-through mr-0 xs:mr-8 sm:mr-16">
+                    R$29
+                  </span>
+                </div>
+                
+                <h3 className="text-xs sm:text-lg md:text-xl font-extrabold text-slate-950 tracking-tight mt-1 sm:mt-2 font-display leading-tight">
+                  Guia de Organização para Pais e Professoras
+                </h3>
+                
+                <p className="text-slate-650 text-[11px] sm:text-[14.5px] font-normal leading-snug sm:leading-relaxed mt-2 sm:mt-3.5">
+                  Aprenda como utilizar o material da forma mais eficiente para acelerar os resultados da alfabetização.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-50 flex flex-col xs:flex-row items-center justify-between gap-1.5">
+                <span className="text-[#22C55E] font-black text-[9px] sm:text-sm flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5 flex-shrink-0" /> Incluso
+                </span>
+                <span className="text-[#22C55E] font-sans font-black text-[9px] sm:text-sm uppercase tracking-wider bg-emerald-50 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded">
+                  R$ 0,00
+                </span>
+              </div>
+            </div>
+
           </div>
 
-          {/* Total values block */}
-          <div className="bg-amber-400 text-slate-950 p-4 rounded-xl text-center shadow-md max-w-xl mx-auto transform hover:scale-101 transition-transform fade-in-section">
-            <h3 className="text-sm sm:text-base font-black font-sans leading-none uppercase">
-              Você leva R$ 275+ em bônus gratuitamente
-            </h3>
+          {/* Destaque box block: RESUMO DO QUE VOCÊ RECEBE */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-amber-200 shadow-md max-w-3xl mx-auto overflow-hidden relative fade-in-section">
+            <div className="absolute top-0 left-0 right-0 h-2 bg-amber-400" />
+            
+            <div className="flex items-center justify-center space-x-2.5 mb-5 sm:mb-6">
+              <span className="text-2xl">📦</span>
+              <h3 className="text-lg sm:text-xl font-black text-slate-950 uppercase tracking-tight font-display text-center">
+                Resumo do que você recebe
+              </h3>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 gap-y-3.5 gap-x-8 sm:gap-x-12 max-w-2xl mx-auto pl-2">
+              <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
+                <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
+                <span>Mais de 3.700 atividades de alfabetização</span>
+              </div>
+              <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
+                <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
+                <span>Material alinhado à BNCC</span>
+              </div>
+              <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
+                <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
+                <span>PDFs prontos para imprimir</span>
+              </div>
+              <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
+                <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
+                <span>Acesso imediato</span>
+              </div>
+              <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
+                <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
+                <span>Atualizações futuras</span>
+              </div>
+              <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
+                <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
+                <span>5 bônus exclusivos</span>
+              </div>
+            </div>
           </div>
 
         </div>
 
         {/* Section divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#FAFAFA] fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
             <path d="M0,20 C150,40 450,10 900,30 C1200,40 1350,20 1440,15 L1440,40 L0,40 Z"></path>
           </svg>
@@ -953,13 +1044,13 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 animate-fade-in">
           
           <div className="text-center mb-10 fade-in-section">
-            <span className="px-3 py-1 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 uppercase tracking-widest mb-2.5 inline-block">
+            <span className="px-3 py-1 rounded-full text-[11px] font-black bg-emerald-100 text-emerald-800 uppercase tracking-widest mb-2.5 inline-block">
               ⏱️ OFERTA POR TEMPO LIMITADO
             </span>
-            <h2 className="text-xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
               Escolha o melhor plano para sua criança
             </h2>
-            <p className="text-slate-500 text-xs sm:text-sm mt-2">
+            <p className="text-[#4b5563] text-[13.5px] sm:text-sm mt-2.5 font-medium leading-relaxed">
               Acesso digital imediato em PDF enviado diretamente no seu e-mail ou Whatsapp
             </p>
           </div>
@@ -972,26 +1063,26 @@ export default function App() {
                 <h3 className="text-base sm:text-lg font-black text-slate-700 uppercase tracking-tight font-sans">
                   Pacote Básico
                 </h3>
-                <p className="text-slate-500 text-xs mt-1 mb-4">
+                <p className="text-slate-500 text-[13px] mt-1 mb-4">
                   O material essencial para começar
                 </p>
 
                 <div className="bg-slate-50 rounded-xl p-4 mb-6 border border-slate-100 flex flex-col justify-center items-center">
-                  <span className="text-xs font-bold text-slate-400 line-through">
+                  <span className="text-[11px] font-bold text-slate-400 line-through">
                     De R$ 37,00
                   </span>
                   <span className="text-2xl font-black font-sans text-slate-600 mt-0.5">
                     R$ 9,90
                   </span>
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider mt-2.5 bg-white px-2 py-0.5 rounded-full border border-slate-100">
+                  <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider mt-2.5 bg-white px-2 py-0.5 rounded-full border border-slate-100">
                     Arquivo Digital em PDF
                   </span>
                 </div>
 
                 {/* What is included checklist */}
                 <ul className="text-left space-y-3 mb-6">
-                  <li className="flex items-start text-xs sm:text-sm font-medium text-slate-600">
-                    <span className="text-[#22C55E] mr-2 font-black text-xs">✓</span>
+                  <li className="flex items-start text-[13.5px] sm:text-sm font-semibold text-slate-600">
+                    <span className="text-[#22C55E] mr-2 font-black text-sm">✓</span>
                     <span className="font-semibold text-slate-800">2.500 Atividades Prontas</span>
                   </li>
                 </ul>
@@ -1001,7 +1092,7 @@ export default function App() {
                 <button
                   id="cta-basico"
                   onClick={() => setIsUpgradeModalOpen(true)}
-                  className="w-full bg-slate-700 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm tracking-wide rounded-[40px] py-3 px-4 shadow-sm hover:scale-101 transition-all select-none cursor-pointer border-b-4 border-slate-900 uppercase"
+                  className="w-full bg-slate-700 hover:bg-slate-800 text-white font-semibold text-[13px] sm:text-sm tracking-wide rounded-[40px] py-3 px-4 shadow-sm hover:scale-101 transition-all select-none cursor-pointer border-b-4 border-slate-900 uppercase"
                 >
                   Adquirir Básico por R$ 9,90
                 </button>
@@ -1011,11 +1102,11 @@ export default function App() {
                   <div className="absolute inset-0 bg-amber-100/20 animate-pulse pointer-events-none" />
                   
                   <div className="relative z-10 flex flex-col items-center justify-center">
-                    <p className="text-amber-900 text-xs font-black flex items-center justify-center gap-1.5 leading-snug">
+                    <p className="text-amber-900 text-[13px] font-black flex items-center justify-center gap-1.5 leading-snug">
                       <span>⚠️ ATENÇÃO!</span>
                       <span className="underline decoration-amber-300 decoration-2">Temos uma oferta ainda melhor para você</span>
                     </p>
-                    <p className="text-amber-800 text-[11px] font-extrabold mt-2 flex items-center justify-center gap-1.5">
+                    <p className="text-amber-800 text-[12px] sm:text-[13px] font-extrabold mt-2 flex items-center justify-center gap-1.5">
                       <span>Escolha o Pacote Premium ao lado</span>
                       <span className="hidden md:inline text-base animate-pulse">➡️</span>
                       <span className="inline md:hidden text-lg animate-bounce">👇</span>
@@ -1029,7 +1120,7 @@ export default function App() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl border-4 border-emerald-500 relative flex flex-col justify-between transform hover:scale-[1.01] transition-transform duration-300 fade-in-section">
               
               {/* Top Green badge */}
-              <div className="bg-[#22C55E] text-white text-center py-2 text-xs sm:text-sm font-black uppercase tracking-widest select-none flex items-center justify-center space-x-1 shadow">
+              <div className="bg-[#22C55E] text-white text-center py-2 text-[13px] sm:text-sm font-black uppercase tracking-widest select-none flex items-center justify-center space-x-1 shadow">
                 <span>⭐</span>
                 <span>MAIS ESCOLHIDO — RECOMENDADO</span>
                 <span>⭐</span>
@@ -1037,71 +1128,71 @@ export default function App() {
 
               <div className="p-6 sm:p-8 flex flex-col justify-between grow">
                 <div>
-                  <div className="bg-emerald-50 text-emerald-800 font-extrabold px-2.5 py-1 rounded inline-block text-[10px] tracking-widest uppercase mb-2">
+                  <div className="bg-emerald-50 text-emerald-800 font-extrabold px-2.5 py-1 rounded inline-block text-[11px] tracking-widest uppercase mb-2">
                     🎁 VOCÊ LEVA TUDO ISSO:
                   </div>
                   <h3 className="text-lg sm:text-xl font-black text-slate-950 uppercase tracking-tight font-sans">
                     Pacote Premium Completo
                   </h3>
-                  <p className="text-slate-600 text-xs sm:text-sm font-bold mt-1 mb-4">
+                  <p className="text-slate-600 text-[13.5px] sm:text-sm font-bold mt-1 mb-4">
                     Para mães e professoras que querem resultado real
                   </p>
 
                   <div className="bg-gradient-to-br from-emerald-50 to-teal-50/50 rounded-xl p-4.5 mb-6 border border-emerald-100 flex flex-col justify-center items-center">
-                    <span className="text-xs font-bold text-slate-400 line-through">
+                    <span className="text-[11px] font-bold text-slate-400 line-through">
                       De R$ 97,00
                     </span>
                     <span className="text-3xl sm:text-4xl font-black font-sans text-[#22C55E] mt-0.5 animate-pulse" style={{ animationDuration: '3s' }}>
                       R$ 27,00
                     </span>
-                    <span className="text-[10px] sm:text-xs font-black text-emerald-700 uppercase tracking-wider mt-2.5 bg-emerald-100/60 px-3 py-1 rounded-full text-center">
+                    <span className="text-[11.5px] sm:text-xs font-black text-emerald-700 uppercase tracking-wider mt-2.5 bg-emerald-100/60 px-3 py-1 rounded-full text-center">
                       Acesso Vitalício + Todas as Atualizações
                     </span>
                   </div>
 
                   {/* What is included premium checklist */}
                   <ul className="text-left space-y-2.5 mb-6">
-                    <li className="flex items-start text-xs sm:text-sm font-semibold text-slate-900">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-semibold text-slate-900">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>+3.700 Atividades Prontas para Imprimir</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Sílabas Simples + Complexas (BRA, NHA, LHA...)</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Coordenação Motora Completa</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Vogais e Consciência Fonológica</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Alfabeto Silábico de A a Z</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Formando Palavras e Frases</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Caligrafia Inicial e Cursiva</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Matemática</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Ensino Religioso e Artes</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-semibold text-orange-600">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-semibold text-orange-600">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">🎁</span>
                       <span>5 Bônus Exclusivos (R$275+)</span>
                     </li>
-                    <li className="flex items-start text-xs sm:text-sm font-medium text-slate-800">
+                    <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>
                       <span>Acesso vitalício + todas as atualizações</span>
                     </li>
@@ -1114,13 +1205,13 @@ export default function App() {
                     href="https://pay.wiapy.com/fCZTb1cH9V"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-bold text-xs sm:text-sm tracking-wide rounded-[40px] py-3.5 px-4 shadow-md hover:scale-102 transition-all select-none cursor-pointer border-b-4 border-emerald-700 uppercase leading-none text-center"
+                    className="w-full inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-bold text-[13.5px] sm:text-sm tracking-wide rounded-[40px] py-3.5 px-4 shadow-md hover:scale-102 transition-all select-none cursor-pointer border-b-4 border-emerald-700 uppercase leading-none text-center"
                   >
                     🎉 GARANTIR PREMIUM — R$ 27,00
                   </a>
 
                   {/* Reinforced checkout elements for premium */}
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-[18px]">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 text-[10px] sm:text-[11px] md:text-xs text-slate-400 font-bold uppercase tracking-wider mt-[18px]">
                     <span className="flex items-center space-x-1">
                       <Lock className="w-2.5 h-2.5 text-emerald-500" />
                       <span>🔒 Compra segura</span>
