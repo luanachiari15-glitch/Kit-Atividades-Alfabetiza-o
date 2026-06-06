@@ -27,7 +27,9 @@ import {
   PenTool,
   Hash,
   Palette,
-  Gift
+  Gift,
+  Infinity,
+  RefreshCw
 } from 'lucide-react';
 
 import { 
@@ -35,7 +37,6 @@ import {
   STATISTICS, 
   AUDIENCE_ITEMS, 
   CONTENT_ITEMS, 
-  TIMELINE_ITEMS, 
   TESTIMONIALS, 
   BONUS_ITEMS, 
   FAQ_ITEMS 
@@ -54,6 +55,7 @@ const RECEIVE_ITEMS = [
     description: 'Receba um enorme acervo de atividades organizadas para trabalhar leitura, escrita, interpretação e desenvolvimento infantil sem precisar criar materiais do zero.',
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
+    image: 'https://i.ibb.co/Zz7QhLTK/Chat-GPT-Image-6-de-jun-de-2026-12-01-31.png',
   },
   {
     id: 'rec-2',
@@ -62,6 +64,7 @@ const RECEIVE_ITEMS = [
     description: 'Atividades com sílabas simples e complexas (BRA, NHA, LHA, CHA, GUA e muito mais) para ajudar a criança a avançar na leitura de forma gradual e sem confusão.',
     iconBg: 'bg-emerald-50 text-emerald-500 border-emerald-100',
     borderAccent: 'border-t-emerald-400',
+    image: 'https://i.ibb.co/Sw0Wdpg4/Chat-GPT-Image-6-de-jun-de-2026-12-14-05.png',
   },
   {
     id: 'rec-3',
@@ -70,6 +73,7 @@ const RECEIVE_ITEMS = [
     description: 'Fortaleça o controle das mãos e desenvolva as habilidades essenciais para uma escrita mais firme, bonita e segura.',
     iconBg: 'bg-orange-50 text-orange-500 border-orange-100',
     borderAccent: 'border-t-orange-400',
+    image: 'https://i.ibb.co/R4pVbdVX/Chat-GPT-Image-6-de-jun-de-2026-12-13-56.png',
   },
   {
     id: 'rec-4',
@@ -78,6 +82,7 @@ const RECEIVE_ITEMS = [
     description: 'Estimule a percepção dos sons das palavras, facilitando o reconhecimento das letras e acelerando o processo de alfabetização.',
     iconBg: 'bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]',
     borderAccent: 'border-t-amber-400',
+    image: 'https://i.ibb.co/jkrmswyg/Chat-GPT-Image-6-de-jun-de-2026-12-29-48.png',
   },
   {
     id: 'rec-5',
@@ -86,6 +91,7 @@ const RECEIVE_ITEMS = [
     description: 'Atividades organizadas de A a Z para reforçar o reconhecimento das letras, sílabas e primeiras leituras.',
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
+    image: 'https://i.ibb.co/Kjwfhnyk/Chat-GPT-Image-6-de-jun-de-2026-12-29-56.png',
   },
   {
     id: 'rec-6',
@@ -94,6 +100,7 @@ const RECEIVE_ITEMS = [
     description: 'A criança aprende a unir sílabas, formar palavras e construir frases de maneira prática, divertida e progressiva.',
     iconBg: 'bg-emerald-50 text-emerald-500 border-emerald-100',
     borderAccent: 'border-t-emerald-400',
+    image: 'https://i.ibb.co/6JDdGw8b/Chat-GPT-Image-6-de-jun-de-2026-12-14-12.png',
   },
   {
     id: 'rec-7',
@@ -102,6 +109,7 @@ const RECEIVE_ITEMS = [
     description: 'Treinos que ajudam a desenvolver uma letra mais bonita, legível e organizada desde os primeiros passos da escrita.',
     iconBg: 'bg-orange-50 text-orange-500 border-orange-100',
     borderAccent: 'border-t-orange-400',
+    image: 'https://i.ibb.co/Q7sX8rxN/Chat-GPT-Image-6-de-jun-de-2026-12-14-19.png',
   },
   {
     id: 'rec-8',
@@ -110,14 +118,124 @@ const RECEIVE_ITEMS = [
     description: 'Atividades para trabalhar números, raciocínio lógico, operações básicas e conceitos matemáticos fundamentais.',
     iconBg: 'bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]',
     borderAccent: 'border-t-amber-400',
+    image: 'https://i.ibb.co/QvhQJZDs/Chat-GPT-Image-6-de-jun-de-2026-12-14-28.png',
   },
   {
     id: 'rec-9',
     icon: Palette,
     title: 'Artes e Ensino Religioso',
-    description: 'Materiais complementares para estimular criatividade, valores, expressão artística e desenvolvimento integral da criança.',
+    description: 'Materiais complementares para estimular criatividade, valores, expression artística e desenvolvimento integral da criança.',
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
+    image: 'https://i.ibb.co/s7XqjYH/Chat-GPT-Image-6-de-jun-de-2026-12-32-40.png',
+  }
+];
+
+const TRANSFORMATION_PAIRS = [
+  {
+    before: "Planejamento demorado e estressante",
+    after: "Aulas prontas em minutos"
+  },
+  {
+    before: "Crianças desinteressadas e desmotivadas",
+    after: "Dinâmicas que engajam qualquer criança"
+  },
+  {
+    before: "Materiais caros e desorganizados",
+    after: "+3.700 atividades e materiais prontos para usar"
+  },
+  {
+    before: "Domingos perdidos preparando materiais",
+    after: "Sua paz de espírito e domingos livres de volta"
+  }
+];
+
+const ALL_IN_ONE_BENEFITS = [
+  {
+    icon: BookOpen,
+    title: "Vogais e Alfabeto",
+    description: "Atividades para reconhecimento das letras e primeiros contatos com a leitura.",
+    color: "bg-blue-50 text-blue-600 border-blue-100"
+  },
+  {
+    icon: Type,
+    title: "Sílabas Simples",
+    description: "Exercícios práticos para formação das primeiras palavras.",
+    color: "bg-emerald-50 text-emerald-600 border-emerald-100"
+  },
+  {
+    icon: Pencil,
+    title: "Escrita e Coordenação",
+    description: "Atividades para desenvolver a escrita e coordenação motora.",
+    color: "bg-orange-50 text-orange-600 border-orange-100"
+  },
+  {
+    icon: Sparkles,
+    title: "Formação de Palavras",
+    description: "Exercícios para ampliar vocabulário e leitura.",
+    color: "bg-amber-50 text-amber-600 border-amber-100"
+  },
+  {
+    icon: Puzzle,
+    title: "Leitura Interativa",
+    description: "Atividades lúdicas que estimulam o interesse pela leitura.",
+    color: "bg-[#FEFCE8] text-[#EAB308] border-[#FEF9C3]"
+  },
+  {
+    icon: FolderHeart,
+    title: "Interpretação de Texto",
+    description: "Materiais para fortalecer compreensão e raciocínio.",
+    color: "bg-purple-50 text-purple-600 border-purple-100"
+  },
+  {
+    icon: Palette,
+    title: "Atividades Lúdicas",
+    description: "Jogos educativos e exercícios divertidos.",
+    color: "bg-[#FDF2F8] text-[#DB2777] border-[#FCE7F3]"
+  },
+  {
+    icon: Award,
+    title: "Material Organizado",
+    description: "Tudo separado por etapas para facilitar a aplicação.",
+    color: "bg-teal-50 text-teal-600 border-teal-100"
+  }
+];
+
+const CATEGORY_CARDS = [
+  {
+    id: "cat-1",
+    type: "cadernos",
+    title: "📚 Cadernos de Alfabetização",
+    description: "Apostilas completas e estruturadas para todas as fases.",
+    gradient: "from-orange-400 to-amber-400"
+  },
+  {
+    id: "cat-2",
+    type: "silabas",
+    title: "🔤 Atividades de Sílabas",
+    description: "Foco no aprendizado silábico simples e complexo.",
+    gradient: "from-blue-400 to-indigo-400"
+  },
+  {
+    id: "cat-3",
+    type: "escrita",
+    title: "✍️ Exercícios de Escrita",
+    description: "Prática de caligrafia e letras bastão e cursiva.",
+    gradient: "from-emerald-400 to-teal-400"
+  },
+  {
+    id: "cat-4",
+    type: "leitura",
+    title: "📖 Leitura Fluente",
+    description: "Textinhos e historinhas para treinar e incentivar a leitura.",
+    gradient: "from-rose-400 to-pink-400"
+  },
+  {
+    id: "cat-5",
+    type: "bonus",
+    title: "🎁 Bônus Exclusivos",
+    description: "Materiais extras incríveis incluídos sem custo adicional hoje.",
+    gradient: "from-amber-400 to-yellow-400"
   }
 ];
 
@@ -130,13 +248,7 @@ export default function App() {
   const [currentMsgIndex, setCurrentMsgIndex] = useState<number>(0);
 
   const loopMessages = [
-    "🔥 OFERTA RELÂMPAGO — VAGAS LIMITADAS HOJE",
-    "✅ +12.473 mães e professoras já compraram",
-    "🎁 5 BÔNUS EXCLUSIVOS GRÁTIS",
-    "⚡ ACESSO IMEDIATO — PDF NO SEU E-MAIL",
-    "🛡️ GARANTIA TOTAL 7 DIAS SEM PERGUNTAS",
-    "💳 15% EXTRA NO PIX",
-    "👩🏫 USADO POR MÃE EM CASA E PROFESSORA EM SALA"
+    "🔥 O valor pode aumentar sem aviso conforme novas atividades forem adicionadas."
   ];
 
   // Loop messages interval transition
@@ -226,23 +338,24 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           
           {/* Main Title H1 */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight font-sans text-balance mb-6">
-            <span className="block text-[#F97316] mb-1.5">
-              Alfabetização do <br /> Zero à Leitura Fluente
+          <h1 className="font-sans tracking-tight mb-6">
+            <span className="block text-[#F97316] text-[26px] sm:text-[46px] md:text-[56px] lg:text-[66px] font-black uppercase leading-tight mb-2">
+              SEU FILHO NÃO PRECISA DE MAIS ATIVIDADES
             </span>
-            <span className="block text-slate-950">
-              Sem Choro, Sem Tédio, Sem Improviso!
+            <span className="block text-slate-950 text-[20px] sm:text-[36px] md:text-[46px] lg:text-[56px] font-black uppercase leading-none">
+              PRECISA DAS ATIVIDADES CERTAS!
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto font-medium leading-relaxed mb-8">
-            O kit completo com{' '}
-            <span className="text-[#3B82F6] font-black bg-blue-50/80 px-1.5 py-0.5 rounded border border-blue-100 text-[13px] sm:text-[15px]">
-              +3.700 dinâmicas e atividades prontas para imprimir
-            </span>{' '}
-            que ensinam sua criança a ler em até 40 dias <span className="block sm:inline text-slate-500 font-bold mt-2 sm:mt-0 text-[12px] sm:text-sm">(mesmo que você não seja professora)</span>
-          </p>
+          <div className="max-w-3xl mx-auto leading-relaxed mb-8 space-y-3">
+            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-semibold">
+              Receba acesso imediato a mais de <span className="text-[#F97316] font-extrabold">3.700 atividades organizadas por etapas</span> que ajudam crianças a desenvolver leitura, escrita e compreensão de forma divertida e progressiva.
+            </p>
+            <p className="text-[11px] sm:text-xs font-semibold text-slate-400">
+              Perfeito para mães e professoras que querem resultados reais sem precisar criar materiais do zero.
+            </p>
+          </div>
 
           {/* Video presentation section */}
           <div className="mb-4 text-center">
@@ -308,53 +421,71 @@ export default function App() {
         </div>
 
         {/* Section divider wave */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#F0FDF4] fill-current">
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-slate-50 fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full preserve-3d" preserveAspectRatio="none">
             <path d="M0,25 C150,40 350,10 720,25 C1070,40 1280,10 1440,25 L1440,40 L0,40 Z"></path>
           </svg>
         </div>
       </section>
 
-      {/* 3. PROVA SOCIAL — NÚMEROS */}
-      <section className="bg-[#F0FDF4] py-10 relative">
-        <div className="max-w-5xl mx-auto px-4">
+      {/* SEÇÃO INTEGRAL DE ENTREGÁVEIS */}
+      <section className="bg-slate-50 py-12 pb-20 relative">
+        <div className="max-w-6xl mx-auto px-4">
           
-          <div className="text-center mb-10 fade-in-section">
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 uppercase tracking-widest banner mb-2.5 inline-block">
-              RESULTADOS REAIS
-            </span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1.5 align-middle">
-              O que acontece quando você usa o método certo
+          <div className="text-center mb-12 fade-in-section">
+            <span className="text-3xl sm:text-4xl mb-2 inline-block">🎁</span>
+            <h2 className="text-2xl sm:text-3xl md:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
+              Tudo o que você recebe ao entrar hoje
             </h2>
+            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-medium mt-3 max-w-2xl mx-auto leading-relaxed">
+              Um acervo completo para transformar a alfabetização em uma experiência mais simples, divertida e eficiente.
+            </p>
           </div>
 
-          {/* Grid of 6 statistic cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 justify-center">
-            {STATISTICS.map((stat, idx) => (
-              <div 
-                key={stat.id}
-                className="bg-white rounded-xl p-4 shadow-sm border border-emerald-100 text-center transform hover:scale-102 transition-all duration-300 flex flex-col justify-between items-center min-h-[130px] fade-in-section"
-              >
-                <div className="flex-1 flex items-center justify-center">
-                  <span className={`text-xl sm:text-2xl font-black font-sans tracking-tight ${stat.color}`}>
-                    {stat.value}
-                  </span>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {RECEIVE_ITEMS.map((item) => {
+              return (
+                <div 
+                  key={item.id}
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between fade-in-section"
+                >
+                  <div className="flex flex-col h-full">
+                    {/* Card Cover Image */}
+                    {item.image && (
+                      <div className="overflow-hidden border-b border-slate-100 bg-slate-50 flex items-center justify-center h-[210px] sm:h-[245px] w-full relative">
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-[1.04]"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                    
+                    {/* Card Content (Title and Description) */}
+                    <div className="p-5 flex flex-col gap-2">
+                      <h3 className="text-sm sm:text-base font-extrabold text-slate-950 tracking-tight leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-600 text-[11px] sm:text-xs md:text-sm font-medium leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-4">
-                  <p className="text-xs sm:text-sm font-medium text-slate-600 leading-snug">
-                    {stat.text}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
+
           </div>
 
         </div>
 
-        {/* Section divider */}
+        {/* Section divider with background fill matching the next block bg-white */}
         <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,25 C200,5 600,35 1000,10 C1250,5 1370,25 1440,20 L1440,40 L0,40 Z"></path>
+            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
           </svg>
         </div>
       </section>
@@ -401,65 +532,195 @@ export default function App() {
 
         </div>
 
-        {/* Section divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#EFF6FF] fill-current">
+        {/* Section divider transitioning to SEÇÃO 1 (Sua Transformação) with bg-slate-50 */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-slate-50 fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
             <path d="M0,20 C150,40 450,10 900,30 C1200,40 1350,20 1440,15 L1440,40 L0,40 Z"></path>
           </svg>
         </div>
       </section>
 
-      {/* 6. CRONOGRAMA DE TRANSFORMAÇÃO */}
-      <section className="bg-[#EFF6FF] py-10 relative">
-        <div className="max-w-3xl mx-auto px-4">
+      {/* SEÇÃO 1 — SUA TRANSFORMAÇÃO */}
+      <section className="bg-white py-16 relative">
+        <div className="max-w-4xl mx-auto px-4">
           
-          <div className="text-center mb-14 fade-in-section">
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-100 text-blue-800 uppercase tracking-widest mb-2.5 inline-block">
-              CRONOGRAMA PROGRESSIVO
-            </span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1">
-              Da letra solta à leitura fluente — semana a semana
+          <div className="text-center mb-10 fade-in-section">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
+              Sua <span className="text-blue-600">Transformação</span>
             </h2>
+            <p className="text-slate-500 text-sm sm:text-base md:text-lg font-medium mt-3">
+              Reconhece alguma dessas situações?
+            </p>
+            <p className="text-slate-400 text-xs sm:text-sm font-normal mt-1">
+              Veja como sua rotina vai mudar
+            </p>
           </div>
 
-          {/* Timeline */}
-          <div className="relative border-l-4 border-blue-200 ml-3 sm:ml-6 pl-4 sm:pl-8 space-y-10">
-            
-            {TIMELINE_ITEMS.map((item, idx) => (
-              <div key={item.id} className="relative fade-in-section">
-                
-                {/* Number bullet */}
-                <div className="absolute -left-[35px] sm:-left-[47px] top-1 w-8 h-8 sm:w-10 sm:h-10 rounded-full border-4 border-[#EFF6FF] bg-blue-600 shadow-sm flex items-center justify-center text-white text-sm font-black select-none">
-                  {item.icon}
-                </div>
-
-                <div className="bg-white rounded-xl p-4.5 shadow-sm border border-blue-50/50 hover:shadow-md transition-shadow relative">
-                  {/* Decorative tag for time frame */}
-                  <span className="absolute -top-3 left-4 bg-amber-400 text-slate-950 font-black text-[8px] uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-sm leading-none border border-amber-500">
-                    {item.period}
-                  </span>
-                  
-                  <div className="mt-2.5">
-                    <h4 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-600 text-xs/relaxed sm:text-sm/relaxed font-medium mt-2">
-                      {item.description}
-                    </p>
+          {/* Comparativo Visual (Fileiras Horizontais exatamente como o anexo) */}
+          <div className="space-y-4 max-w-3xl mx-auto px-1">
+            {TRANSFORMATION_PAIRS.map((pair, idx) => (
+              <div 
+                key={idx}
+                className="bg-white rounded-2xl border border-slate-100/80 shadow-xs hover:shadow-md hover:border-blue-100 transition-all duration-300 p-3 sm:p-4.5 flex flex-row items-center justify-between gap-1.5 sm:gap-6 text-left"
+              >
+                {/* Lado Esquerdo (Situação Anterior) */}
+                <div className="flex items-center space-x-2.5 sm:space-x-3 w-[45%] flex-shrink-0">
+                  {/* Círculo Vermelho com X */}
+                  <div className="w-5.5 h-5.5 sm:w-7.5 sm:h-7.5 rounded-full bg-red-50 border border-red-100 text-red-400 flex items-center justify-center font-bold text-[10px] sm:text-xs flex-shrink-0">
+                    ✕
                   </div>
+                  <span className="text-slate-400 text-[10px] sm:text-[13px] md:text-sm font-semibold line-through leading-snug tracking-tight">
+                    {pair.before}
+                  </span>
                 </div>
 
+                {/* Setinha Azul Central */}
+                <div className="text-blue-500 text-xs sm:text-lg font-black flex-shrink-0 px-0.5">
+                  →
+                </div>
+
+                {/* Lado Direito (Nova Rotina Elegante) */}
+                <div className="flex items-center space-x-2.5 sm:space-x-3 w-[50%] flex-shrink-0">
+                  {/* Círculo Verde com Check */}
+                  <div className="w-5.5 h-5.5 sm:w-7.5 sm:h-7.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-500 flex items-center justify-center font-bold text-[10px] sm:text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <span className="text-slate-950 text-[10px] sm:text-[13px] md:text-sm font-extrabold leading-snug tracking-tight">
+                    {pair.after}
+                  </span>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Cards de Destaque no Rodapé da Seção */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto mt-12 px-1">
+            
+            {/* Bloco 1: AULAS DINÂMICAS */}
+            <div className="bg-[#F0F7FF] rounded-2xl p-5 border border-[#D9EBFF] text-center shadow-subtle hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col items-center justify-center min-h-[115px] sm:min-h-[135px] fade-in-section">
+              <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
+                📚
+              </span>
+              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+                AULAS DINÂMICAS
+              </span>
+            </div>
+
+            {/* Bloco 2: ECONOMIA DE TEMPO */}
+            <div className="bg-[#F0F7FF] rounded-2xl p-5 border border-[#D9EBFF] text-center shadow-subtle hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col items-center justify-center min-h-[115px] sm:min-h-[135px] fade-in-section">
+              <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
+                ⏰
+              </span>
+              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+                ECONOMIA DE TEMPO
+              </span>
+            </div>
+
+            {/* Bloco 3: ALUNOS ENGAJADOS */}
+            <div className="bg-[#F0F7FF] rounded-2xl p-5 border border-[#D9EBFF] text-center shadow-subtle hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col items-center justify-center min-h-[115px] sm:min-h-[135px] fade-in-section">
+              <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
+                🎯
+              </span>
+              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+                ALUNOS ENGAJADOS
+              </span>
+            </div>
+
+            {/* Bloco 4: RESULTADOS VISÍVEIS */}
+            <div className="bg-[#F0F7FF] rounded-2xl p-5 border border-[#D9EBFF] text-center shadow-subtle hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col items-center justify-center min-h-[115px] sm:min-h-[135px] fade-in-section">
+              <span className="text-3xl sm:text-4xl mb-2.5 select-none transform hover:rotate-6 transition-transform block">
+                ✨
+              </span>
+              <span className="text-[9px] sm:text-[11px] font-black tracking-wider text-slate-800 uppercase font-sans leading-none">
+                RESULTADOS VISÍVEIS
+              </span>
+            </div>
 
           </div>
 
         </div>
 
-        {/* Section divider */}
+        {/* Section divider wrapping into the new section (bg-white) */}
         <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,25 C150,40 350,10 720,25 C1070,40 1280,10 1440,25 L1440,40 L0,40 Z"></path>
+            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* SEÇÃO — TUDO O QUE VOCÊ PRECISA EM UM SÓ LUGAR (NOVA VERSÃO SIMPLIFICADA) */}
+      <section className="bg-white py-16 relative">
+        <div className="max-w-5xl mx-auto px-4">
+          
+          <div className="text-center mb-12 fade-in-section">
+            <span className="text-3xl sm:text-4xl mb-2 inline-block">🚀</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
+              Tudo o que você precisa em um só lugar
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-medium mt-3 max-w-xl mx-auto leading-relaxed">
+              O suporte completo para guiar e acelerar a alfabetização da criança, com total segurança e praticidade.
+            </p>
+          </div>
+
+          {/* Simple Cards Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-5xl mx-auto">
+            
+            {/* CARD 1: +3.700 Dinâmicas e atividades prontas */}
+            <div className="bg-orange-50/45 rounded-2xl p-4 sm:p-6 border border-orange-100 hover:border-orange-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
+              <div className="flex flex-col items-center">
+                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-orange-100 text-orange-600 border border-orange-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
+                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
+                  +3.700 Dinâmicas e atividades prontas
+                </h3>
+              </div>
+            </div>
+
+            {/* CARD 2: Acesso vitalício */}
+            <div className="bg-amber-50/45 rounded-2xl p-4 sm:p-6 border border-amber-100 hover:border-amber-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
+              <div className="flex flex-col items-center">
+                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-amber-100 text-amber-600 border border-amber-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
+                  <Infinity className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
+                  Acesso vitalício
+                </h3>
+              </div>
+            </div>
+
+            {/* CARD 3: Atualizações semanais */}
+            <div className="bg-emerald-50/45 rounded-2xl p-4 sm:p-6 border border-emerald-100 hover:border-emerald-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
+              <div className="flex flex-col items-center">
+                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-emerald-100 text-emerald-600 border border-emerald-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
+                  <RefreshCw className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
+                  Atualizações semanais
+                </h3>
+              </div>
+            </div>
+
+            {/* CARD 4: Garantia de 7 dias */}
+            <div className="bg-blue-50/45 rounded-2xl p-4 sm:p-6 border border-blue-100 hover:border-blue-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-center fade-in-section">
+              <div className="flex flex-col items-center">
+                <div className="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-blue-100 text-blue-600 border border-blue-200 text-xl sm:text-2xl flex-shrink-0 mb-3.5 sm:mb-4.5 shadow-subtle">
+                  <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <h3 className="text-xs sm:text-base font-black text-slate-950 tracking-tight leading-snug">
+                  Garantia de 7 dias
+                </h3>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Section divider wrapping into the next section (bg-white) */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
+          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
+            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
           </svg>
         </div>
       </section>
@@ -488,59 +749,6 @@ export default function App() {
         </div>
 
         {/* Section divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-slate-50 fill-current">
-          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
-          </svg>
-        </div>
-      </section>
-
-      {/* SEÇÃO INTEGRAL DE ENTREGÁVEIS */}
-      <section className="bg-slate-50 py-12 pb-20 relative">
-        <div className="max-w-6xl mx-auto px-4">
-          
-          <div className="text-center mb-12 fade-in-section">
-            <span className="text-3xl sm:text-4xl mb-2 inline-block">🎁</span>
-            <h2 className="text-2xl sm:text-3xl md:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-              Tudo o que você recebe ao entrar hoje
-            </h2>
-            <p className="text-slate-600 text-xs sm:text-sm md:text-base font-medium mt-3 max-w-2xl mx-auto leading-relaxed">
-              Um acervo completo para transformar a alfabetização em uma experiência mais simples, divertida e eficiente.
-            </p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {RECEIVE_ITEMS.map((item) => {
-              const IconComponent = item.icon;
-              return (
-                <div 
-                  key={item.id}
-                  className={`bg-white rounded-2xl p-5 shadow-sm border-t-4 ${item.borderAccent} border-x border-b border-slate-100 hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between fade-in-section`}
-                >
-                  <div>
-                    {/* Flat Styled Icon Container */}
-                    <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl ${item.iconBg} border text-xl flex-shrink-0 mb-4 shadow-subtle`}>
-                      <IconComponent className="w-5.5 h-5.5" />
-                    </div>
-                    
-                    {/* Content details */}
-                    <h3 className="text-sm sm:text-base font-extrabold text-slate-950 tracking-tight leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-600 text-[11px] sm:text-xs md:text-sm font-medium mt-2 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-
-          </div>
-
-        </div>
-
-        {/* Section divider with background fill matching Bônus yellow */}
         <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#FFFBEB] fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
             <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
@@ -810,25 +1018,54 @@ export default function App() {
       </section>
 
       {/* 10. GARANTIA */}
-      <section className="bg-[#F0FDF4] py-10 relative">
-        <div className="max-w-3xl mx-auto px-4">
+      <section className="bg-[#F0FDF4] py-14 relative">
+        <div className="max-w-4xl mx-auto px-4">
           
-          <div className="bg-white rounded-2xl p-6 sm:p-9.5 shadow-md border-2 border-emerald-500/20 flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left fade-in-section">
+          <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-emerald-500/10 flex flex-col md:flex-row items-center md:space-x-10 text-center md:text-left relative overflow-hidden fade-in-section">
             
-            {/* Left large icon column */}
-            <div className="bg-emerald-500 rounded-full p-5 mb-4 md:mb-0 flex-shrink-0 border-4 border-emerald-100 shadow-lg flex items-center justify-center transform hover:scale-105 transition-all duration-300">
-              <ShieldCheck className="w-16 h-16 text-white" />
+            {/* Ambient decorative background blobs for premium feel */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-50 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-amber-50 rounded-full blur-3xl pointer-events-none" />
+
+            {/* Left Column: Premium Guarantee Seal Image */}
+            <div className="flex-shrink-0 mb-6 md:mb-0 relative z-10 flex items-center justify-center">
+              <div className="relative group">
+                <img 
+                  src="https://i.ibb.co/S706BCtM/Selo-de-Garantia-de-7-Dias-PNG-Transparente-Sem-Fundo-1.png" 
+                  alt="Selo de Garantia de 7 Dias" 
+                  referrerPolicy="no-referrer"
+                  className="w-40 sm:w-48 md:w-56 h-auto drop-shadow-2xl transform hover:rotate-3 hover:scale-105 transition-all duration-300 select-none"
+                />
+              </div>
             </div>
 
-            {/* Right text box */}
-            <div className="flex-1">
-              <h3 className="text-base sm:text-xl font-black text-emerald-900 tracking-tight flex items-center justify-center md:justify-start gap-1.5 uppercase">
-                <span>🛡️</span>
-                <span>Garantia INCONDICIONAL de 7 dias</span>
+            {/* Right Column: Premium Text & Value Proposition */}
+            <div className="flex-1 relative z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+                🛡️ Compromisso e Segurança
+              </span>
+              
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-9 tracking-tight text-slate-900 leading-tight">
+                Satisfação Garantida ou <span className="text-[#22C55E]">Seu Dinheiro de Volta</span>
               </h3>
-              <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed mt-4">
-                Se em <span className="text-emerald-600 font-extrabold">7 dias</span> você não amar o material, por qualquer motivo e sem precisar dar nenhuma explicação, basta nos enviar um e-mail e nós <span className="text-emerald-700 font-extrabold underline decoration-emerald-300 decoration-2">devolvemos 100% do seu dinheiro</span>. <span className="font-bold text-slate-800">Sem perguntas, sem burocracia.</span> O <span className="text-emerald-600 font-extrabold">risco é completamente nosso</span>, você não tem <span className="text-emerald-700 font-black">absolutamente nada a perder</span>!
+              
+              <p className="text-slate-600 text-xs sm:text-sm md:text-base font-medium leading-relaxed mt-4">
+                Queremos que você tome essa decisão com total segurança e tranquilidade. Se em até <span className="text-emerald-600 font-extrabold bg-emerald-50 px-1 py-0.5 rounded border border-emerald-100">7 dias</span> você não amar o material, por qualquer motivo ou sem precisar dar nenhuma explicação, basta nos enviar um único e-mail e nós <span className="text-emerald-700 font-extrabold underline decoration-emerald-400 decoration-2">devolvemos 100% do seu dinheiro</span>.
               </p>
+              
+              <div className="mt-5 pt-5 border-t border-slate-100 flex flex-wrap gap-4 items-center justify-center md:justify-start text-xs font-semibold text-slate-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 text-base">✓</span> Reembolso Integral e Rápido
+                </span>
+                <span className="hidden sm:inline text-slate-300">•</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 text-base">✓</span> Processo 100% Seguro
+                </span>
+                <span className="hidden sm:inline text-slate-300">•</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 text-base">✓</span> Risco Zero Garantido
+                </span>
+              </div>
             </div>
 
           </div>
@@ -891,53 +1128,12 @@ export default function App() {
 
         </div>
 
-        {/* Section divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#22C55E] fill-current">
+        {/* Section divider wrapping into footer (bg-[#1F2937]) */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#1F2937] fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
             <path d="M0,25 C150,40 350,10 720,25 C1070,40 1280,10 1440,25 L1440,40 L0,40 Z"></path>
           </svg>
         </div>
-      </section>
-
-      {/* 12. CTA FINAL */}
-      <section className="bg-[#22C55E] py-10 relative text-white overflow-hidden">
-        
-        {/* Playful elements inside green CTA background */}
-        <div className="absolute top-10 left-[10%] text-white/5 text-4xl pointer-events-none select-none">✏️</div>
-        <div className="absolute bottom-10 right-[10%] text-white/5 text-4xl pointer-events-none select-none">🎈</div>
-
-        <div className="max-w-2xl mx-auto px-4 text-center relative z-10 flex flex-col items-center">
-          
-          <div className="bg-white/10 border border-white/20 p-3 rounded-full text-2xl mb-5 flex-shrink-0 animate-bounce" style={{ animationDuration: '4s' }}>
-            📚
-          </div>
-
-          <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight leading-[1.1] font-sans mb-4.5">
-            Não deixe a criança ficar para trás.
-          </h2>
-
-          <p className="text-emerald-100 text-xs sm:text-sm font-medium max-w-xl mx-auto leading-relaxed mb-8">
-            Cada semana sem o método certo é mais uma semana de atraso. Comece hoje. Em 30 dias, você não vai reconhecer a evolução dela.
-          </p>
-
-          <button
-            id="cta-4"
-            onClick={scrollToOffer}
-            className="w-full max-w-md bg-white text-[#22C55E] hover:bg-slate-50 font-semibold text-xs sm:text-sm tracking-wide rounded-[40px] py-3.5 px-6 sm:px-8 shadow-lg hover:scale-102 active:scale-98 leading-none transition-all cursor-pointer uppercase border-b-4 border-slate-300"
-          >
-            ✨ SIM! QUERO O KIT AGORA COM DESCONTO
-          </button>
-
-          <div className="flex items-center space-x-3 text-emerald-100 font-bold text-[9px] uppercase tracking-wider mt-6">
-            <span>🔒 Pagamento seguro</span>
-            <span>•</span>
-            <span>⚡ Acesso imediato</span>
-            <span>•</span>
-            <span>🛡️ Garantia de 7 dias</span>
-          </div>
-
-        </div>
-
       </section>
 
       {/* 13. FOOTER */}
