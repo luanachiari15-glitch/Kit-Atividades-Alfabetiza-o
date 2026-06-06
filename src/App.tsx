@@ -29,8 +29,11 @@ import {
   Palette,
   Gift,
   Infinity,
-  RefreshCw
+  RefreshCw,
+  X
 } from 'lucide-react';
+
+import { motion, AnimatePresence } from 'motion/react';
 
 import { 
   PAIN_ITEMS, 
@@ -329,6 +332,21 @@ function HeroMockup() {
   );
 }
 
+const BUYERS_POOL = [
+  { name: "Mariana Silva", package: "Plano Premium", time: "há 32 segundos" },
+  { name: "Sandra Souza", package: "Plano Premium", time: "há 2 minutos" },
+  { name: "Ana Paula N.", package: "Plano Básico", time: "há 1 minuto" },
+  { name: "Juliana Medeiros", package: "Plano Premium", time: "há 45 segundos" },
+  { name: "Carla Souza", package: "Plano Premium", time: "há 3 minutos" },
+  { name: "Patrícia Gomes", package: "Plano Premium", time: "há 15 segundos" },
+  { name: "Beatriz Santos", package: "Plano Premium", time: "há 1 minuto" },
+  { name: "Aline Costa", package: "Plano Básico", time: "há 4 minutos" },
+  { name: "Renata Vasconcelos", package: "Plano Premium", time: "há 50 segundos" },
+  { name: "Letícia Ramos", package: "Plano Básico", time: "há 10 segundos" },
+  { name: "Fernanda Lima", package: "Plano Premium", time: "há 2 minutos" },
+  { name: "Cláudia Rodrigues", package: "Plano Premium", time: "há 3 minutos" }
+];
+
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
@@ -336,10 +354,47 @@ export default function App() {
   const [selectedPackage, setSelectedPackage] = useState<'basico' | 'premium'>('premium');
   const [timeLeft, setTimeLeft] = useState<string>('14:59');
   const [currentMsgIndex, setCurrentMsgIndex] = useState<number>(0);
+  
+  const [activeNotification, setActiveNotification] = useState<{
+    name: string;
+    package: string;
+    time: string;
+  } | null>(null);
 
   const loopMessages = [
     "🔥 O valor pode aumentar sem aviso conforme novas atividades forem adicionadas."
   ];
+
+  // Loop of purchase notifications
+  useEffect(() => {
+    let delayTimeout: NodeJS.Timeout;
+    let hideTimeout: NodeJS.Timeout;
+
+    const showNextNotification = () => {
+      const randomIndex = Math.floor(Math.random() * BUYERS_POOL.length);
+      setActiveNotification(BUYERS_POOL[randomIndex]);
+
+      // Hide after 5 seconds
+      hideTimeout = setTimeout(() => {
+        setActiveNotification(null);
+        // Wait 55 seconds before showing the next one (making it a total interval of 60 seconds/1 minute)
+        delayTimeout = setTimeout(() => {
+          showNextNotification();
+        }, 55000);
+      }, 5000);
+    };
+
+    // Initial delay of 10 seconds before showing the first popup on page load
+    const startTimeout = setTimeout(() => {
+      showNextNotification();
+    }, 10000);
+
+    return () => {
+      clearTimeout(startTimeout);
+      clearTimeout(hideTimeout);
+      clearTimeout(delayTimeout);
+    };
+  }, []);
 
   // Loop messages interval transition
   useEffect(() => {
@@ -1088,9 +1143,9 @@ export default function App() {
                 <button
                   id="cta-basico"
                   onClick={() => setIsUpgradeModalOpen(true)}
-                  className="w-full bg-slate-700 hover:bg-slate-800 text-white font-semibold text-[13px] sm:text-sm tracking-wide rounded-[40px] py-3 px-4 shadow-sm hover:scale-101 transition-all select-none cursor-pointer border-b-4 border-slate-900 uppercase"
+                  className="w-full bg-slate-700 hover:bg-slate-800 text-white font-bold text-[13.5px] sm:text-sm tracking-wide rounded-[40px] py-3.5 px-4 shadow-sm hover:scale-101 transition-all select-none cursor-pointer border-b-4 border-slate-900 uppercase"
                 >
-                  Adquirir Básico por R$ 9,90
+                  Quero o Pacote Básico
                 </button>
 
                 {/* ATENÇÃO BANNER COAXING PREMIUM SELECT */}
@@ -1203,7 +1258,7 @@ export default function App() {
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-bold text-[13.5px] sm:text-sm tracking-wide rounded-[40px] py-3.5 px-4 shadow-md hover:scale-102 transition-all select-none cursor-pointer border-b-4 border-emerald-700 uppercase leading-none text-center"
                   >
-                    🎉 GARANTIR PREMIUM — R$ 27,00
+                    Quero o Pacote Premium
                   </a>
 
                   {/* Reinforced checkout elements for premium */}
@@ -1391,9 +1446,55 @@ export default function App() {
 
       {/* Irresistible Basic-to-Premium Upgrade Offer Modal Popup */}
       <UpgradeOfferModal 
-        isOpen={isUpgradeModalOpen}
-        onClose={() => setIsUpgradeModalOpen(false)}
+          isOpen={isUpgradeModalOpen}
+          onClose={() => setIsUpgradeModalOpen(false)}
       />
+
+      {/* Dynamic Purchase Notifications Popup */}
+      <AnimatePresence>
+        {activeNotification && (
+          <motion.div
+            initial={{ opacity: 0, x: 200, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 200, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 260, damping: 25 }}
+            className="fixed top-16 sm:top-24 right-3 sm:right-6 md:right-8 z-[1000] bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl border border-emerald-50/70 p-2 text-left sm:p-4 max-w-[220px] sm:max-w-[340px] w-full flex items-center space-x-2.5 sm:space-x-4 pointer-events-auto"
+          >
+            {/* Minimalist Visual Badge */}
+            <div className="relative flex-shrink-0">
+              <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shadow-inner">
+                <ShoppingBag className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-emerald-550" />
+              </div>
+              <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2 sm:h-3 sm:w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-450 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-emerald-500"></span>
+              </span>
+            </div>
+
+            {/* Notification Text contents */}
+            <div className="flex-1 min-w-0 pr-2">
+              <p className="text-[#0F172A] text-[11px] sm:text-sm font-extrabold truncate">
+                {activeNotification.name}
+              </p>
+              <p className="text-slate-500 text-[10px] sm:text-[11.5px] leading-tight mt-0.5">
+                Adquiriu: <span className="font-extrabold text-emerald-600 block sm:inline">{activeNotification.package}</span>
+              </p>
+              <span className="text-[8px] sm:text-[10px] text-slate-400 font-bold block mt-0.5 uppercase tracking-wide font-sans">
+                🟢 Compra aprovada · {activeNotification.time}
+              </span>
+            </div>
+
+            {/* Dismiss Button */}
+            <button
+              onClick={() => setActiveNotification(null)}
+              className="absolute top-1.5 right-1.5 sm:top-2.5 sm:right-2.5 text-slate-350 hover:text-slate-500 transition-colors p-0.5 rounded-full hover:bg-slate-50 cursor-pointer"
+              aria-label="Fechar notificação"
+            >
+              <X className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );
