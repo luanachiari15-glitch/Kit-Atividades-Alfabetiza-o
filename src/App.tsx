@@ -623,6 +623,57 @@ export default function App() {
 
 
 
+      {/* 7. DEPOIMENTOS */}
+      <section className="bg-white py-10 relative">
+        <div className="max-w-4xl mx-auto px-4">
+          
+          <div className="text-center mb-10 fade-in-section">
+            <span className="px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-800 uppercase tracking-widest mb-2.5 inline-block">
+              QUEM COMPROU, APROVA
+            </span>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1">
+              O que as mães e professoras estão dizendo
+            </h2>
+            <p className="text-slate-500 text-sm sm:text-base font-normal mt-1.5">
+              ★★★★★ 4.9/5 · +8.000 avaliações verificadas
+            </p>
+          </div>
+
+          {/* Testimonials Frame Row Slider */}
+          <div className="fade-in-section">
+            <TestimonialCarousel />
+          </div>
+
+          {/* Testimonial Premium CTA Button */}
+          <div className="mt-10 flex flex-col items-center justify-center space-y-3.5 fade-in-section">
+            <button
+              onClick={scrollToOffer}
+              className="w-full max-w-md inline-flex items-center justify-center bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-sm sm:text-base tracking-wide rounded-[40px] py-4 px-6 sm:px-8 shadow-lg hover:scale-102 hover:shadow-xl transition-all cursor-pointer select-none leading-none border-b-4 border-amber-600 uppercase text-center"
+            >
+              🚀 Quero Acessar Agora
+            </button>
+            <div className="flex items-center space-x-2.5 text-slate-400 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
+              <span className="flex items-center space-x-1">
+                <Lock className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Compra 100% Segura</span>
+              </span>
+              <span>•</span>
+              <span>📥 Envio Imediato</span>
+              <span>•</span>
+              <span>🛡️ 7 Dias de Garantia</span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Section divider transitioning to bg-white (SEÇÃO 1 — SUA TRANSFORMAÇÃO) */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
+          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
+            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
+          </svg>
+        </div>
+      </section>
+
       {/* SEÇÃO 1 — SUA TRANSFORMAÇÃO */}
       <section className="bg-white py-16 relative">
         <div className="max-w-4xl mx-auto px-4">
@@ -723,63 +774,8 @@ export default function App() {
 
         </div>
 
-        {/* Section divider wrapping into the new section (bg-white) */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-white fill-current">
-          <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
-          </svg>
-        </div>
-      </section>
-
-
-
-      {/* 7. DEPOIMENTOS */}
-      <section className="bg-white py-10 relative">
-        <div className="max-w-4xl mx-auto px-4">
-          
-          <div className="text-center mb-10 fade-in-section">
-            <span className="px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-800 uppercase tracking-widest mb-2.5 inline-block">
-              QUEM COMPROU, APROVA
-            </span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight mt-1">
-              O que as mães e professoras estão dizendo
-            </h2>
-            <p className="text-slate-500 text-sm sm:text-base font-normal mt-1.5">
-              ★★★★★ 4.9/5 · +8.000 avaliações verificadas
-            </p>
-          </div>
-
-          {/* Testimonials Frame Row Slider */}
-          <div className="fade-in-section">
-            <TestimonialCarousel />
-          </div>
-
-          {/* Testimonial Premium CTA Button */}
-          <div className="mt-10 flex flex-col items-center justify-center space-y-3.5 fade-in-section">
-            <a
-              href="https://pay.wiapy.com/fCZTb1cH9V"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full max-w-md inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-extrabold text-[13px] sm:text-sm tracking-wide rounded-[40px] py-4 px-6 sm:px-8 shadow-lg hover:scale-102 hover:shadow-xl transition-all cursor-pointer select-none leading-none border-b-4 border-emerald-700 uppercase text-center"
-            >
-              ⚡ QUERO O KIT PREMIUM COM TODOS OS BÔNUS — APENAS R$ 27
-            </a>
-            <div className="flex items-center space-x-2.5 text-slate-400 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
-              <span className="flex items-center space-x-1">
-                <Lock className="w-3.5 h-3.5 text-emerald-500" />
-                <span>Compra 100% Segura</span>
-              </span>
-              <span>•</span>
-              <span>📥 Envio Imediato</span>
-              <span>•</span>
-              <span>🛡️ 7 Dias de Garantia</span>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Section divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#FFFBEB] fill-current">
+        {/* Section divider wrapping into the next section (bg-[#FAF8F2]) */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none text-[#FAF8F2] fill-current">
           <svg viewBox="0 0 1440 40" className="w-full h-full" preserveAspectRatio="none">
             <path d="M0,15 C200,30 550,5 950,20 C1200,30 1350,15 1440,10 L1440,40 L0,40 Z"></path>
           </svg>
@@ -797,7 +793,7 @@ export default function App() {
             <span className="inline-flex items-center gap-1.5 bg-rose-100 text-rose-650 font-extrabold uppercase tracking-widest text-[10px] sm:text-[11px] px-3.5 py-1.5 rounded-full border border-rose-200 shadow-sm mb-4 leading-none select-none">
               🔥 SUPER OFERTA DE HOJE
             </span>
-            <h2 className="text-2xl sm:text-3.5xl md:text-3.5xl font-kids text-slate-950 tracking-tight leading-tight max-w-3xl mx-auto">
+            <h2 className="text-xl sm:text-2.5xl md:text-3xl font-extrabold text-slate-950 tracking-tight leading-tight max-w-3xl mx-auto">
               🎁 E HOJE VOCÊ AINDA RECEBE <span className="text-[#F97316]">5 BÔNUS EXCLUSIVOS GRÁTIS</span>
             </h2>
             <p className="text-slate-600 text-sm sm:text-base font-medium mt-3.5 max-w-2xl mx-auto leading-relaxed">
