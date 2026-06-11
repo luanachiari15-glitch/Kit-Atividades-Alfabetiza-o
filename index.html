@@ -19,6 +19,79 @@
         } catch (e) {
           console.warn("Could not redefine fetch:", e);
         }
+
+        // Previne erros de "Converting circular structure to JSON" injetados por ferramentas de rastreamento ou pelo iframe
+        try {
+          var originalStringify = JSON.stringify;
+          JSON.stringify = function(value, replacer, space) {
+            var seen = new WeakSet();
+            function safeReplacer(key, val) {
+              if (typeof key === 'string' && (key.startsWith('__reactFiber') || key.startsWith('__reactProps') || key.startsWith('__reactEvents') || key.startsWith('__reactContainer'))) {
+                return undefined;
+              }
+              if (val && (val instanceof HTMLElement || val instanceof Element || (val.nodeType && val.nodeName))) {
+                return '[Element]';
+              }
+              if (val && typeof val === 'object') {
+                if (seen.has(val)) {
+                  return '[Circular]';
+                }
+                seen.add(val);
+              }
+              if (typeof replacer === 'function') {
+                return replacer(key, val);
+              }
+              return val;
+            }
+
+            if (Array.isArray(replacer)) {
+              var originalReplacer = replacer;
+              replacer = function(key, val) {
+                if (key === "" || originalReplacer.indexOf(key) !== -1) {
+                  return safeReplacer(key, val);
+                }
+                return undefined;
+              }
+            } else if (!replacer) {
+              replacer = safeReplacer;
+            } else {
+              var originalFunctionReplacer = replacer;
+              replacer = function(key, val) {
+                var pruned = safeReplacer(key, val);
+                return originalFunctionReplacer(key, pruned);
+              }
+            }
+
+            try {
+              return originalStringify(value, replacer, space);
+            } catch (err) {
+              try {
+                var cache = [];
+                var fallback = originalStringify(value, function(k, v) {
+                  if (typeof k === 'string' && (k.startsWith('__reactFiber') || k.startsWith('__reactProps') || k.startsWith('__reactEvents') || k.startsWith('__reactContainer'))) {
+                    return undefined;
+                  }
+                  if (v && (v instanceof HTMLElement || v instanceof Element || (v.nodeType && v.nodeName))) {
+                    return '[Element]';
+                  }
+                  if (typeof v === 'object' && v !== null) {
+                    if (cache.indexOf(v) !== -1) {
+                      return '[Circular]';
+                    }
+                    cache.push(v);
+                  }
+                  return v;
+                }, space);
+                cache = null;
+                return fallback;
+              } catch (e) {
+                return '{"error":"Circular structure pruned"}';
+              }
+            }
+          };
+        } catch (e) {
+          console.error("Could not override JSON.stringify:", e);
+        }
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
