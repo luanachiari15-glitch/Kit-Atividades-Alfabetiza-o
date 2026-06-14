@@ -397,6 +397,158 @@ export default function App() {
     time: string;
   } | null>(null);
 
+  // Recovery Exit Intent Funnel states
+  const [checkoutOverridePrice, setCheckoutOverridePrice] = useState<string | undefined>(undefined);
+  const [checkoutOverrideTitle, setCheckoutOverrideTitle] = useState<string | undefined>(undefined);
+  const [hasReachedOffers, setHasReachedOffers] = useState<boolean>(false);
+  const [hasPurchased, setHasPurchased] = useState<boolean>(false);
+  const [exitPopupStage, setExitPopupStage] = useState<number | null>(null); // null, 1, 2, 3
+  const [hasClosedExitProcess, setHasClosedExitProcess] = useState<boolean>(false);
+
+  // 1. Restore purchase and exit tracking states
+  useEffect(() => {
+    const purchased = localStorage.getItem('has_purchased_material') === 'true';
+    if (purchased) {
+      setHasPurchased(true);
+    }
+  }, []);
+
+  const handlePurchaseSuccess = () => {
+    setHasPurchased(true);
+    localStorage.setItem('has_purchased_material', 'true');
+    setExitPopupStage(null);
+  };
+
+  // Helper to open override checkout and close modals
+  const handleOpenCheckoutWithOverride = (pkg: 'basico' | 'premium', price: string, title?: string) => {
+    setSelectedPackage(pkg);
+    setCheckoutOverridePrice(price);
+    setCheckoutOverrideTitle(title);
+    setExitPopupStage(null); // Close exit modal once checkout opens
+    setIsCheckoutOpen(true);
+  };
+
+  // 2. Track whether the user has viewed the offers/pricing section
+  useEffect(() => {
+    const el = document.getElementById('oferta');
+    if (!el) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setHasReachedOffers(true);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // 3. Intercept high intent browser history back action
+  useEffect(() => {
+    if (hasReachedOffers && !hasPurchased && !hasClosedExitProcess) {
+      // Push an extra dummy state to browser history
+      if (window.history.state?.stage !== 'exit-intent') {
+        window.history.pushState({ stage: 'exit-intent' }, '');
+      }
+
+      const handlePopState = (e: PopStateEvent) => {
+        // Intercept back key and trigger the first exit intent stage
+        if (exitPopupStage === null) {
+          setExitPopupStage(1);
+          // Re-push so they don't immediately drop off if they click again
+          window.history.pushState({ stage: 'exit-intent' }, '');
+        } else {
+          window.history.pushState({ stage: 'exit-intent' }, '');
+        }
+      };
+
+      window.addEventListener('popstate', handlePopState);
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }
+  }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
+
+  // 4. Mouseleave detection (desktop exit intent)
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY < 50 && hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
+        setExitPopupStage(1);
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
+
+  // 5. Rapid upward scroll detection (interest reversal / exit intention)
+  useEffect(() => {
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let lastScrollTime = Date.now();
+
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const now = Date.now();
+      const dt = now - lastScrollTime;
+      if (dt > 10) {
+        const speed = (lastScrollTop - scrollTop) / dt; // positive speed is upward scrolling
+        
+        const offerElement = document.getElementById('oferta');
+        const offerOffset = offerElement ? offerElement.offsetTop : 99999;
+
+        // "rolar rapido pra cima mas só quando ela chegar nas seções Antes da seção de ofertas"
+        if (speed > 1.8 && hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null && scrollTop < offerOffset) {
+          setExitPopupStage(1);
+        }
+      }
+      lastScrollTop = scrollTop;
+      lastScrollTime = now;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
+
+  // 6. User inactivity timer (60 seconds idle once they have gazed at prices)
+  useEffect(() => {
+    let idleTimer: NodeJS.Timeout;
+
+    const resetIdleTimer = () => {
+      clearTimeout(idleTimer);
+      if (hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
+        idleTimer = setTimeout(() => {
+          setExitPopupStage(1);
+        }, 60000);
+      }
+    };
+
+    if (hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
+      window.addEventListener('mousemove', resetIdleTimer);
+      window.addEventListener('keydown', resetIdleTimer);
+      window.addEventListener('scroll', resetIdleTimer);
+      window.addEventListener('click', resetIdleTimer);
+      window.addEventListener('touchstart', resetIdleTimer);
+      resetIdleTimer();
+    }
+
+    return () => {
+      clearTimeout(idleTimer);
+      window.removeEventListener('mousemove', resetIdleTimer);
+      window.removeEventListener('keydown', resetIdleTimer);
+      window.removeEventListener('scroll', resetIdleTimer);
+      window.removeEventListener('click', resetIdleTimer);
+      window.removeEventListener('touchstart', resetIdleTimer);
+    };
+  }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
+
   const loopMessages = [
     "🔥 O valor pode aumentar sem aviso conforme novas atividades forem adicionadas."
   ];
@@ -1573,8 +1725,15 @@ export default function App() {
       {/* Embedded Checkout / PIX Simulator Modal Component */}
       <CheckoutModal 
         isOpen={isCheckoutOpen} 
-        onClose={() => setIsCheckoutOpen(false)} 
+        onClose={() => {
+          setIsCheckoutOpen(false);
+          setCheckoutOverridePrice(undefined);
+          setCheckoutOverrideTitle(undefined);
+        }} 
         selectedPackage={selectedPackage}
+        overridePrice={checkoutOverridePrice}
+        overrideTitle={checkoutOverrideTitle}
+        onSuccess={handlePurchaseSuccess}
       />
 
       {/* Irresistible Basic-to-Premium Upgrade Offer Modal Popup */}
@@ -1625,6 +1784,247 @@ export default function App() {
             >
               <X className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
             </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 3-Layer Exit Intent Recovery Funnel Modals */}
+      <AnimatePresence>
+        {exitPopupStage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 z-[9999] overflow-y-auto"
+          >
+            {exitPopupStage === 1 && (
+              <motion.div
+                initial={{ scale: 0.95, y: 15 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 15 }}
+                className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border-4 border-amber-300 relative my-8 p-5 sm:p-6 space-y-4"
+              >
+                <div className="flex items-center space-x-2 text-amber-500 justify-center">
+                  <AlertTriangle className="w-6 h-6 flex-shrink-0" />
+                  <h3 className="text-md sm:text-lg font-black text-center text-slate-950 uppercase tracking-tight font-display">
+                    ⚠️ ESPERE! SUA OFERTA AINDA ESTÁ RESERVADA
+                  </h3>
+                </div>
+
+                <div className="space-y-3 text-slate-650 text-xs sm:text-sm">
+                  <p className="font-extrabold text-slate-900 text-center leading-snug">
+                    Você chegou até aqui porque quer acelerar a alfabetização da sua criança.
+                  </p>
+                  <p className="text-center text-slate-500 leading-normal font-medium">
+                    Antes de sair, liberamos uma condição especial que normalmente não fica disponível.
+                  </p>
+                  <div className="p-3.5 bg-amber-50 rounded-xl border border-amber-200 text-slate-850">
+                    <p className="leading-relaxed font-semibold text-xs text-slate-800 text-center">
+                      O <strong>Pacote Premium</strong> reúne tudo o que você precisa para trabalhar leitura, escrita, consciência fonológica, sílabas, palavras, frases e atividades prontas para imprimir.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-100 flex flex-col justify-center items-center">
+                  <span className="text-[10px] sm:text-xs uppercase font-bold text-slate-400 line-through">
+                    De R$ 37,00 por apenas:
+                  </span>
+                  <span className="text-3xl sm:text-4xl font-extrabold text-emerald-600 my-1 font-sans">
+                    R$ 27,00
+                  </span>
+                  <span className="text-[10px] text-amber-600 font-extrabold uppercase tracking-wide">
+                    Oferta válida apenas nesta visita.
+                  </span>
+                </div>
+
+                {/* Gatilhos */}
+                <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-xs text-slate-600 font-bold bg-slate-50/50 p-2.5 rounded-lg">
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Economia imediata</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Acesso instantâneo</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>+3.700 atividades</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Mães e Professoras</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-2 pt-2">
+                  <a
+                    href="https://pay.wiapy.com/XdvXjHI56"
+                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-black py-3.5 rounded-xl shadow-lg active:scale-95 transition-all text-xs sm:text-sm tracking-wide uppercase border-b-4 border-emerald-700 leading-none text-center cursor-pointer block"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    SIM! QUERO GARANTIR POR R$ 27
+                  </a>
+                  <button
+                    onClick={() => setExitPopupStage(2)}
+                    className="w-full text-slate-400 hover:text-red-600 text-[10px] sm:text-[11px] font-bold underline text-center transition-all cursor-pointer py-1"
+                  >
+                    Não, prefiro ignorar e deixar minha criança com dificuldades na leitura e escrita
+                  </button>
+                </div>
+              </motion.div>
+            )}
+
+            {exitPopupStage === 2 && (
+              <motion.div
+                initial={{ scale: 0.95, y: 15 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 15 }}
+                className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border-4 border-emerald-500 relative my-8 p-5 sm:p-6 space-y-4"
+              >
+                <div className="flex items-center space-x-2 text-emerald-600 justify-center">
+                  <Gift className="w-6 h-6 flex-shrink-0" />
+                  <h3 className="text-md sm:text-lg font-black text-center uppercase tracking-tight font-display">
+                    ⏳ ÚLTIMA TENTATIVA
+                  </h3>
+                </div>
+
+                <div className="space-y-3 text-slate-650 text-xs sm:text-sm">
+                  <p className="font-extrabold text-slate-900 text-center leading-snug">
+                    Não queremos que você saia sem aproveitar esta oportunidade.
+                  </p>
+                  <div className="p-3.5 bg-emerald-50 rounded-xl border border-emerald-150 text-slate-800">
+                    <p className="leading-snug font-semibold text-xs text-center text-emerald-950">
+                      Acabamos de liberar o menor valor possível para o Pacote Premium. Você recebe exatamente o mesmo conteúdo, mais de 3.700 atividades, os mesmos bônus e o mesmo acesso de antes.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-100 flex flex-col justify-center items-center">
+                  <span className="text-[10px] sm:text-xs uppercase font-bold text-slate-400">
+                    Mas agora por apenas:
+                  </span>
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#22C55E] my-1 font-sans">
+                    R$ 17,00
+                  </span>
+                  <span className="text-[10px] text-rose-500 font-extrabold uppercase tracking-wide">
+                    Esta condição desaparece ao fechar esta página.
+                  </span>
+                </div>
+
+                {/* Gatilhos */}
+                <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-xs text-slate-600 font-bold bg-slate-50/50 p-2.5 rounded-lg">
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Oferta de recuperação</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Mesmo conteúdo completo</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Acesso imediato</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Valor simbólico</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-2 pt-2">
+                  <a
+                    href="https://pay.wiapy.com/QWlXhnf9SU"
+                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-black py-3.5 rounded-xl shadow-lg active:scale-95 transition-all text-xs sm:text-sm tracking-wide uppercase border-b-4 border-emerald-700 leading-none text-center cursor-pointer block"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    SIM! QUERO O PREMIUM POR R$ 17
+                  </a>
+                  <button
+                    onClick={() => setExitPopupStage(3)}
+                    className="w-full text-slate-400 hover:text-red-600 text-[10px] sm:text-[11px] font-bold underline text-center transition-all cursor-pointer py-1"
+                  >
+                    Não tenho interesse em ajudar na alfabetização da minha criança
+                  </button>
+                </div>
+              </motion.div>
+            )}
+
+            {exitPopupStage === 3 && (
+              <motion.div
+                initial={{ scale: 0.95, y: 15 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 15 }}
+                className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border-4 border-amber-300 relative my-8 p-5 sm:p-6 space-y-4"
+              >
+                <div className="flex items-center space-x-2 text-rose-500 justify-center">
+                  <Gift className="w-6 h-6 flex-shrink-0 animate-bounce" />
+                  <h3 className="text-md sm:text-lg font-black text-center uppercase tracking-tight font-display text-rose-600">
+                    🎁 ÚLTIMA CHANCE
+                  </h3>
+                </div>
+
+                <div className="space-y-3 text-slate-650 text-xs sm:text-sm">
+                  <p className="font-extrabold text-slate-900 text-center leading-snug">
+                    Antes de sair definitivamente...
+                  </p>
+                  <p className="text-center text-slate-500 leading-relaxed font-semibold text-xs sm:text-sm">
+                    Se o Premium não faz sentido para você neste momento, leve pelo menos o pacote básico. Assim você já terá acesso imediato a atividades prontas para começar hoje.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-100 flex flex-col justify-center items-center">
+                  <span className="text-[10px] sm:text-xs uppercase font-bold text-slate-400 animate-pulse">
+                    Valor especial:
+                  </span>
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#22C55E] my-1 font-sans">
+                    R$ 7,90
+                  </span>
+                  <span className="text-[10px] text-rose-500 font-extrabold uppercase tracking-wide text-center">
+                    Depois que esta página for fechada esta oferta não ficará disponível novamente.
+                  </span>
+                </div>
+
+                {/* Gatilhos */}
+                <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-xs text-slate-600 font-bold bg-slate-50/50 p-2.5 rounded-lg">
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
+                    <span>Menor investimento possível</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
+                    <span>Acesso imediato</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
+                    <span>Comece hoje mesmo</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
+                    <span>Sem mensalidade</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-2 pt-2 text-center">
+                  <a
+                    href="https://pay.wiapy.com/TCveUd-RLl"
+                    className="w-full bg-[#22C55E] hover:bg-[#1fbd59] text-white font-black py-4 rounded-xl shadow-lg active:scale-95 transition-all text-xs sm:text-sm tracking-wide uppercase border-b-4 border-emerald-700 leading-none text-center cursor-pointer block"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    GARANTIR POR R$ 7,90
+                  </a>
+                  <button
+                    onClick={() => {
+                      setExitPopupStage(null);
+                      setHasClosedExitProcess(true);
+                    }}
+                    className="inline-block mx-auto text-slate-450 hover:text-slate-600 text-[10px] sm:text-[11px] font-bold underline transition-all cursor-pointer py-1"
+                  >
+                    Fechar página
+                  </button>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

@@ -10,9 +10,12 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   selectedPackage: 'basico' | 'premium';
+  overridePrice?: string;
+  overrideTitle?: string;
+  onSuccess?: () => void;
 }
 
-export default function CheckoutModal({ isOpen, onClose, selectedPackage }: CheckoutModalProps) {
+export default function CheckoutModal({ isOpen, onClose, selectedPackage, overridePrice, overrideTitle, onSuccess }: CheckoutModalProps) {
   const [paymentMethod, setPaymentMethod] = useState<'pix' | 'card'>('pix');
   const [formData, setFormData] = useState({
     name: '',
@@ -47,20 +50,22 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage }: Chec
 
   const handleMockPay = () => {
     setStep('success');
+    if (onSuccess) {
+      onSuccess();
+    }
   };
 
   const isPremium = selectedPackage === 'premium';
-  const priceLabel = isPremium ? 'R$ 37,00' : 'R$ 9,90';
+  const priceLabel = overridePrice || (isPremium ? 'R$ 37,00' : 'R$ 9,90');
   const originalPriceLabel = isPremium ? 'R$ 97,00' : 'R$ 37,00';
-  const titleLabel = isPremium ? 'Pacote Premium Completo' : 'Pacote Básico de Alfabetização';
+  const titleLabel = overrideTitle || (isPremium ? 'Pacote Premium Completo' : 'Pacote Básico de Alfabetização');
   const descLabel = isPremium 
     ? '+3.700 Atividades, Sílabas Simples + Complexas, 5 Bônus, Acesso Vitalício'
     : 'Pacote com 2.500 Atividades Prontas em PDF';
 
-  // Mock PIX keys representing the price
-  const mockPixKey = isPremium
-    ? "00020101021126580014br.gov.bcb.pix0136d47bcd90-0814-453f-808b-7d20004e8bad520400005303986540537.005802BR5925INFOPRODUTO ALFABETIZACAO6009SAO PAULO62070503***63047EA2"
-    : "00020101021126580014br.gov.bcb.pix0136d47bcd90-0814-453f-808b-7d20004e8bad520400005303986540509.905802BR5925INFOPRODUTO ALFABETIZACAO6009SAO PAULO62070503***63047EA2";
+  // Extract clean number representation for mock PIX key
+  const numericValue = priceLabel.replace('R$', '').replace(',', '.').trim();
+  const mockPixKey = `00020101021126580014br.gov.bcb.pix0136d47bcd90-0814-453f-808b-7d20004e8bad5204000053039865405${numericValue}5802BR5925INFOPRODUTO ALFABETIZACAO6009SAO PAULO62070503***63047EA2`;
 
   return (
     <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 z-[9999] overflow-y-auto animate-fade-in">
