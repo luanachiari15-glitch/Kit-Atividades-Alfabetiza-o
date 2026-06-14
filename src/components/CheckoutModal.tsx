@@ -50,7 +50,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage }: Chec
   };
 
   const isPremium = selectedPackage === 'premium';
-  const priceLabel = isPremium ? 'R$ 27,00' : 'R$ 9,90';
+  const priceLabel = isPremium ? 'R$ 37,00' : 'R$ 9,90';
   const originalPriceLabel = isPremium ? 'R$ 97,00' : 'R$ 37,00';
   const titleLabel = isPremium ? 'Pacote Premium Completo' : 'Pacote Básico de Alfabetização';
   const descLabel = isPremium 
@@ -59,7 +59,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage }: Chec
 
   // Mock PIX keys representing the price
   const mockPixKey = isPremium
-    ? "00020101021126580014br.gov.bcb.pix0136d47bcd90-0814-453f-808b-7d20004e8bad520400005303986540527.005802BR5925INFOPRODUTO ALFABETIZACAO6009SAO PAULO62070503***63047EA2"
+    ? "00020101021126580014br.gov.bcb.pix0136d47bcd90-0814-453f-808b-7d20004e8bad520400005303986540537.005802BR5925INFOPRODUTO ALFABETIZACAO6009SAO PAULO62070503***63047EA2"
     : "00020101021126580014br.gov.bcb.pix0136d47bcd90-0814-453f-808b-7d20004e8bad520400005303986540509.905802BR5925INFOPRODUTO ALFABETIZACAO6009SAO PAULO62070503***63047EA2";
 
   return (

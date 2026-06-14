@@ -9,6 +9,8 @@ import {
   Star, 
   ShieldCheck, 
   ChevronDown, 
+  ChevronLeft,
+  ChevronRight,
   Lock, 
   HelpCircle, 
   ShoppingBag, 
@@ -347,6 +349,39 @@ const BUYERS_POOL = [
   { name: "Cláudia Rodrigues", package: "Plano Premium", time: "há 3 minutos" }
 ];
 
+const MOBILE_BONUS_LIST = [
+  {
+    num: 1,
+    title: "Caderno Completo de Coordenação Motora",
+    oldPrice: "R$27",
+    description: "Ajude a criança a desenvolver firmeza nas mãos, coordenação e preparação para a escrita através de exercícios divertidos e progressivos."
+  },
+  {
+    num: 2,
+    title: "100 Atividades de Recorte e Colagem",
+    oldPrice: "R$19",
+    description: "Atividades lúdicas para estimular atenção, coordenação motora fina e desenvolvimento cognitivo."
+  },
+  {
+    num: 3,
+    title: "Caderno de Pintura Educativa",
+    oldPrice: "R$17",
+    description: "Desenhos e atividades que reforçam o aprendizado enquanto a criança se diverte."
+  },
+  {
+    num: 4,
+    title: "Acesso Vitalício e Atualizações Futuras",
+    oldPrice: "R$47",
+    description: "Receba novas atividades adicionadas ao acervo sem pagar novamente."
+  },
+  {
+    num: 5,
+    title: "Guia de Organização para Pais e Professoras",
+    oldPrice: "R$29",
+    description: "Aprenda como utilizar o material da forma mais eficiente para acelerar os resultados da alfabetização."
+  }
+];
+
 export default function App() {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
@@ -354,6 +389,7 @@ export default function App() {
   const [selectedPackage, setSelectedPackage] = useState<'basico' | 'premium'>('premium');
   const [timeLeft, setTimeLeft] = useState<string>('14:59');
   const [currentMsgIndex, setCurrentMsgIndex] = useState<number>(0);
+  const [activeBonus, setActiveBonus] = useState<number>(0);
   
   const [activeNotification, setActiveNotification] = useState<{
     name: string;
@@ -364,6 +400,14 @@ export default function App() {
   const loopMessages = [
     "🔥 O valor pode aumentar sem aviso conforme novas atividades forem adicionadas."
   ];
+
+  // Auto-slide for mobile bonus section
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveBonus((prev) => (prev + 1) % MOBILE_BONUS_LIST.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Loop of purchase notifications
   useEffect(() => {
@@ -856,8 +900,97 @@ export default function App() {
             </p>
           </div>
 
+          {/* Mobile Automated Slider Carousel ("Esteira") */}
+          <div className="block md:hidden mb-12 relative px-1">
+            <div className="relative overflow-hidden w-full rounded-2xl border border-amber-250 bg-white shadow-lg">
+              <div className="overflow-hidden relative w-full">
+                <motion.div 
+                  className="flex"
+                  animate={{ x: `-${activeBonus * 100}%` }}
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                >
+                  {MOBILE_BONUS_LIST.map((bonus, idx) => (
+                    <div key={idx} className="w-full flex-shrink-0 p-5 sm:p-6 relative overflow-hidden flex flex-col justify-between min-h-[260px] xs:min-h-[240px]">
+                      {/* Corner Value Badge */}
+                      <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-bl-xl shadow-sm z-10 leading-none">
+                        GRÁTIS
+                      </div>
+                      
+                      <div>
+                        <div className="flex items-center justify-between gap-1.5 mb-3">
+                          <span className="text-[10px] font-black uppercase text-amber-600 tracking-widest bg-amber-50 px-2 sm:px-3 py-1 rounded-full border border-amber-100 font-display w-fit">
+                            🎁 BÔNUS #{bonus.num}
+                          </span>
+                          <span className="text-slate-400 text-xs font-bold line-through mr-10">
+                            {bonus.oldPrice}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-[15px] xs:text-base font-extrabold text-slate-950 tracking-tight font-display leading-tight mt-1">
+                          {bonus.title}
+                        </h3>
+                        
+                        <p className="text-slate-650 text-xs sm:text-sm font-normal leading-relaxed mt-2.5">
+                          {bonus.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-5 pt-3 border-t border-slate-50 flex items-center justify-between">
+                        <span className="text-[#22C55E] font-black text-[10px] xs:text-xs flex items-center gap-1">
+                          <Check className="w-3.5 h-3.5 flex-shrink-0" /> Incluso
+                        </span>
+                        <span className="text-[#22C55E] font-sans font-black text-[10px] xs:text-xs uppercase tracking-wider bg-emerald-50 px-2 py-0.5 rounded">
+                          R$ 0,00
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Arrow Buttons inside the container */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveBonus((prev) => (prev - 1 + MOBILE_BONUS_LIST.length) % MOBILE_BONUS_LIST.length);
+                }}
+                className="absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow border border-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-50 active:scale-95 transition-all z-20 cursor-pointer"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveBonus((prev) => (prev + 1) % MOBILE_BONUS_LIST.length);
+                }}
+                className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow border border-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-50 active:scale-95 transition-all z-20 cursor-pointer"
+                aria-label="Próximo"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Navigation Dots below */}
+            <div className="flex justify-center items-center space-x-1.5 mt-4">
+              {MOBILE_BONUS_LIST.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveBonus(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === activeBonus 
+                      ? 'bg-amber-500 w-5' 
+                      : 'bg-slate-300 w-2 hover:bg-slate-400'
+                  }`}
+                  aria-label={`Ir para o bônus ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
           {/* Bonus list in big professional cards */}
-          <div className="grid grid-cols-2 gap-3.5 sm:gap-6 md:gap-8 mb-12 sm:mb-14">
+          <div className="hidden md:grid grid-cols-2 gap-3.5 sm:gap-6 md:gap-8 mb-12 sm:mb-14">
             
             {/* BÔNUS #1 */}
             <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group fade-in-section">
@@ -1194,7 +1327,7 @@ export default function App() {
                       De R$ 97,00
                     </span>
                     <span className="text-3xl sm:text-4xl font-black font-sans text-[#22C55E] mt-0.5 animate-pulse" style={{ animationDuration: '3s' }}>
-                      R$ 27,00
+                      R$ 37,00
                     </span>
                     <span className="text-[11.5px] sm:text-xs font-black text-emerald-700 uppercase tracking-wider mt-2.5 bg-emerald-100/60 px-3 py-1 rounded-full text-center">
                       Acesso Vitalício + Todas as Atualizações
