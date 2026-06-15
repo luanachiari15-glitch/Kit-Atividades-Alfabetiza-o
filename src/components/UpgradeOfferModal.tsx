@@ -45,13 +45,13 @@ export default function UpgradeOfferModal({ isOpen, onClose }: UpgradeOfferModal
         <div className="p-4 sm:p-6 overflow-y-auto max-h-[75vh] sm:max-h-none">
           
           <p className="text-slate-700 text-xs sm:text-sm font-semibold leading-relaxed mb-4 text-center">
-            Você selecionou o <span className="text-slate-400 font-extrabold line-through">Pacote Básico por R$ 9,90</span>, mas nesta tela você tem direito a levar o <span className="text-[#22C55E] font-black">PACOTE PREMIUM COMPLETO</span> por apenas <span className="text-emerald-600 font-extrabold text-base sm:text-lg">R$ 27,00</span>!
+            Você selecionou o <span className="text-slate-400 font-extrabold line-through">Pacote Básico por R$ 9,90</span>, mas nesta tela você tem direito a levar o <span className="text-[#22C55E] font-black">PACOTE PREMIUM COMPLETO</span> por apenas <span className="text-emerald-600 font-extrabold text-base sm:text-lg">R$ 17,00</span>!
           </p>
 
           <div className="p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-center mb-4">
             <p className="text-amber-900 text-[11px] sm:text-xs font-black flex items-center justify-center gap-1">
               <span>✍️ COMPRA 100% IDÊNTICA:</span>
-              <span className="font-bold">Mesmo conteúdo do plano de R$ 37,00</span>
+              <span className="font-bold">Mesmo conteúdo do plano de R$ 27,00</span>
             </p>
             <p className="text-amber-800 text-[10px] sm:text-[11px] mt-1 font-medium leading-normal">
               Você receberá <span className="font-extrabold">exatamente o mesmo material e todos os bônus</span> entregues no pacote completo, economizando mais de R$ 10,00 adicionais!
@@ -124,12 +124,12 @@ export default function UpgradeOfferModal({ isOpen, onClose }: UpgradeOfferModal
           <div className="space-y-3 text-center">
             
             <a 
-              href="https://pay.wiapy.com/XdvXjHI56"
+              href="https://pay.wiapy.com/QWlXhnf9SU"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-extrabold text-xs sm:text-base tracking-wide rounded-[40px] py-3 px-4 shadow-lg hover:scale-101 active:scale-99 transition-all select-none cursor-pointer border-b-4 border-emerald-700 uppercase space-x-1 sm:space-x-2 text-balance leading-tight"
             >
-              <span>🎉 SIM! QUERO O PREMIUM COM DESCONTO (POR APENAS R$ 27)</span>
+              <span>🎉 SIM! QUERO O PREMIUM COM DESCONTO (POR APENAS R$ 17)</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
             </a>
 
