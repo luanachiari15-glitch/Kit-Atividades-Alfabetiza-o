@@ -458,7 +458,7 @@ export default function App() {
       const handlePopState = (e: PopStateEvent) => {
         // Intercept back key and trigger the first exit intent stage
         if (exitPopupStage === null) {
-          setExitPopupStage(1);
+          setExitPopupStage(2);
           // Re-push so they don't immediately drop off if they click again
           window.history.pushState({ stage: 'exit-intent' }, '');
         } else {
@@ -477,7 +477,7 @@ export default function App() {
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY < 50 && hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
-        setExitPopupStage(1);
+        setExitPopupStage(2);
       }
     };
 
@@ -504,7 +504,7 @@ export default function App() {
 
         // "rolar rapido pra cima mas só quando ela chegar nas seções Antes da seção de ofertas"
         if (speed > 1.8 && hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null && scrollTop < offerOffset) {
-          setExitPopupStage(1);
+          setExitPopupStage(2);
         }
       }
       lastScrollTop = scrollTop;
@@ -525,7 +525,7 @@ export default function App() {
       clearTimeout(idleTimer);
       if (hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
         idleTimer = setTimeout(() => {
-          setExitPopupStage(1);
+          setExitPopupStage(2);
         }, 60000);
       }
     };
@@ -1479,7 +1479,7 @@ export default function App() {
                       De R$ 97,00
                     </span>
                     <span className="text-3xl sm:text-4xl font-black font-sans text-[#22C55E] mt-0.5 animate-pulse" style={{ animationDuration: '3s' }}>
-                      R$ 37,00
+                      R$ 27,00
                     </span>
                     <span className="text-[11.5px] sm:text-xs font-black text-emerald-700 uppercase tracking-wider mt-2.5 bg-emerald-100/60 px-3 py-1 rounded-full text-center">
                       Acesso Vitalício + Todas as Atualizações
@@ -1538,7 +1538,7 @@ export default function App() {
                 <div className="mt-auto">
                   <a
                     id="cta-premium"
-                    href="https://pay.wiapy.com/fCZTb1cH9V"
+                    href="https://pay.wiapy.com/XdvXjHI56"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center bg-[#22C55E] hover:bg-[#1fbd59] text-white font-bold text-[13.5px] sm:text-sm tracking-wide rounded-[40px] py-3.5 px-4 shadow-md hover:scale-102 transition-all select-none cursor-pointer border-b-4 border-emerald-700 uppercase leading-none text-center"
@@ -1779,7 +1779,7 @@ export default function App() {
             {/* Dismiss Button */}
             <button
               onClick={() => setActiveNotification(null)}
-              className="absolute top-1.5 right-1.5 sm:top-2.5 sm:right-2.5 text-slate-350 hover:text-slate-500 transition-colors p-0.5 rounded-full hover:bg-slate-50 cursor-pointer"
+              className="absolute top-1.5 right-1.5 sm:top-2.5 sm:right-2.5 text-slate-350 hover:text-slate-550 transition-colors p-0.5 rounded-full hover:bg-slate-50 cursor-pointer"
               aria-label="Fechar notificação"
             >
               <X className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
@@ -1788,7 +1788,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* 3-Layer Exit Intent Recovery Funnel Modals */}
+      {/* 2-Layer Exit Intent Recovery Funnel Modals */}
       <AnimatePresence>
         {exitPopupStage !== null && (
           <motion.div
@@ -1797,84 +1797,6 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 z-[9999] overflow-y-auto"
           >
-            {exitPopupStage === 1 && (
-              <motion.div
-                initial={{ scale: 0.95, y: 15 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.95, y: 15 }}
-                className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border-4 border-amber-300 relative my-8 p-5 sm:p-6 space-y-4"
-              >
-                <div className="flex items-center space-x-2 text-amber-500 justify-center">
-                  <AlertTriangle className="w-6 h-6 flex-shrink-0" />
-                  <h3 className="text-md sm:text-lg font-black text-center text-slate-950 uppercase tracking-tight font-display">
-                    ⚠️ ESPERE! SUA OFERTA AINDA ESTÁ RESERVADA
-                  </h3>
-                </div>
-
-                <div className="space-y-3 text-slate-650 text-xs sm:text-sm">
-                  <p className="font-extrabold text-slate-900 text-center leading-snug">
-                    Você chegou até aqui porque quer acelerar a alfabetização da sua criança.
-                  </p>
-                  <p className="text-center text-slate-500 leading-normal font-medium">
-                    Antes de sair, liberamos uma condição especial que normalmente não fica disponível.
-                  </p>
-                  <div className="p-3.5 bg-amber-50 rounded-xl border border-amber-200 text-slate-850">
-                    <p className="leading-relaxed font-semibold text-xs text-slate-800 text-center">
-                      O <strong>Pacote Premium</strong> reúne tudo o que você precisa para trabalhar leitura, escrita, consciência fonológica, sílabas, palavras, frases e atividades prontas para imprimir.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-100 flex flex-col justify-center items-center">
-                  <span className="text-[10px] sm:text-xs uppercase font-bold text-slate-400 line-through">
-                    De R$ 37,00 por apenas:
-                  </span>
-                  <span className="text-3xl sm:text-4xl font-extrabold text-emerald-600 my-1 font-sans">
-                    R$ 27,00
-                  </span>
-                  <span className="text-[10px] text-amber-600 font-extrabold uppercase tracking-wide">
-                    Oferta válida apenas nesta visita.
-                  </span>
-                </div>
-
-                {/* Gatilhos */}
-                <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-xs text-slate-600 font-bold bg-slate-50/50 p-2.5 rounded-lg">
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                    <span>Economia imediata</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                    <span>Acesso instantâneo</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                    <span>+3.700 atividades</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                    <span>Mães e Professoras</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col space-y-2 pt-2">
-                  <a
-                    href="https://pay.wiapy.com/XdvXjHI56"
-                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-black py-3.5 rounded-xl shadow-lg active:scale-95 transition-all text-xs sm:text-sm tracking-wide uppercase border-b-4 border-emerald-700 leading-none text-center cursor-pointer block"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    SIM! QUERO GARANTIR POR R$ 27
-                  </a>
-                  <button
-                    onClick={() => setExitPopupStage(2)}
-                    className="w-full text-slate-400 hover:text-red-600 text-[10px] sm:text-[11px] font-bold underline text-center transition-all cursor-pointer py-1"
-                  >
-                    Não, prefiro ignorar e deixar minha criança com dificuldades na leitura e escrita
-                  </button>
-                </div>
-              </motion.div>
-            )}
-
             {exitPopupStage === 2 && (
               <motion.div
                 initial={{ scale: 0.95, y: 15 }}

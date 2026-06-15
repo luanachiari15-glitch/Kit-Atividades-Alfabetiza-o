@@ -56,7 +56,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage, overri
   };
 
   const isPremium = selectedPackage === 'premium';
-  const priceLabel = overridePrice || (isPremium ? 'R$ 37,00' : 'R$ 9,90');
+  const priceLabel = overridePrice || (isPremium ? 'R$ 27,00' : 'R$ 9,90');
   const originalPriceLabel = isPremium ? 'R$ 97,00' : 'R$ 37,00';
   const titleLabel = overrideTitle || (isPremium ? 'Pacote Premium Completo' : 'Pacote Básico de Alfabetização');
   const descLabel = isPremium 
