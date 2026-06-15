@@ -104,14 +104,15 @@ export default function UpgradeOfferModal({ isOpen, onClose }: UpgradeOfferModal
               </li>
               <li className="flex items-start text-orange-600 font-bold">
                 <CheckCircle2 className="w-4 h-4 text-[#22C55E] mr-1.5 flex-shrink-0 mt-0.5" />
-                <span>🎁 <strong className="font-extrabold uppercase text-orange-700">TODOS OS 5 BÔNUS INCLUSOS:</strong></span>
+                <span>🎁 <strong className="font-extrabold uppercase text-orange-700">TODOS OS 6 BÔNUS INCLUSOS:</strong></span>
               </li>
               <li className="pl-6 text-[11px] sm:text-xs text-slate-600 space-y-1">
                 <div className="flex items-center gap-1">⏱️ <strong>Bônus 1:</strong> Apostila de Reforço (80 páginas)</div>
                 <div className="flex items-center gap-1">📜 <strong>Bônus 2:</strong> Frases e Textos Progressivos</div>
-                <div className="flex items-center gap-1">🎲 <strong>Bônus 3:</strong> Jogas Didáticos (Memória, Bingo, Dominó...)</div>
+                <div className="flex items-center gap-1">🎲 <strong>Bônus 3:</strong> Jogos Didáticos (Memória, Bingo, Dominó...)</div>
                 <div className="flex items-center gap-1">👥 <strong>Bônus 4:</strong> Grupo Exclusivo de Mães/Professoras</div>
                 <div className="flex items-center gap-1">📅 <strong>Bônus 5:</strong> Cronograma estruturado (15 min ao dia)</div>
+                <div className="flex items-center gap-1 text-emerald-650 font-bold">⚽ <strong>Bônus 6:</strong> Atividades da Copa do Mundo (Exclusivo)</div>
               </li>
               <li className="flex items-start text-[11px] sm:text-xs text-slate-500 font-medium pt-1 border-t border-emerald-100/60">
                 <CheckCircle2 className="w-4 h-4 text-[#22C55E] mr-1.5 flex-shrink-0 mt-0.5" />

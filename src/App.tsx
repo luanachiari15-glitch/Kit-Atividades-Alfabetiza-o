@@ -133,6 +133,16 @@ const RECEIVE_ITEMS = [
     iconBg: 'bg-blue-50 text-blue-500 border-blue-100',
     borderAccent: 'border-t-blue-400',
     image: 'https://i.ibb.co/h0TVszf/Chat-GPT-Image-6-de-jun-de-2026-12-32-40.png',
+  },
+  {
+    id: 'rec-copa',
+    icon: Star,
+    title: 'BÔNUS EXCLUSIVO: Atividades da Copa do Mundo',
+    description: 'Um super caderno temático e lúdico com atividades com o tema da Copa do Mundo para desenvolver leitura, escrita, raciocínio de forma divertida.',
+    iconBg: 'bg-amber-50 text-amber-500 border-amber-100',
+    borderAccent: 'border-t-amber-400',
+    image: 'https://i.ibb.co/mVpqZHxr/Chat-GPT-Image-15-de-jun-de-2026-19-36-21.png',
+    isPremiumBonus: true,
   }
 ];
 
@@ -835,8 +845,16 @@ export default function App() {
               return (
                 <div 
                   key={item.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between fade-in-section"
+                  className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between fade-in-section relative ${
+                    item.isPremiumBonus ? 'border-2 border-amber-300 shadow-amber-55/60' : 'border border-slate-100'
+                  }`}
                 >
+                  {item.isPremiumBonus && (
+                    <div className="absolute top-3 right-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-black uppercase text-[9px] px-2.5 py-1 rounded-full shadow-md z-20 border border-yellow-300 flex items-center gap-1.5 animate-bounce" style={{ animationDuration: '4s' }}>
+                      <Award className="w-3 h-3 text-white" />
+                      <span>Exclusivo</span>
+                    </div>
+                  )}
                   <div className="flex flex-col h-full">
                     {/* Card Cover Image */}
                     {item.image && (
@@ -1041,9 +1059,6 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 relative z-10">
           
           <div className="text-center mb-12 sm:mb-14 fade-in-section">
-            <span className="inline-flex items-center gap-1.5 bg-rose-100 text-rose-650 font-extrabold uppercase tracking-widest text-[10px] sm:text-[11px] px-3.5 py-1.5 rounded-full border border-rose-200 shadow-sm mb-4 leading-none select-none">
-              🔥 SUPER OFERTA DE HOJE
-            </span>
             <h2 className="text-xl sm:text-2.5xl md:text-3xl font-extrabold text-slate-950 tracking-tight leading-tight max-w-3xl mx-auto">
               🎁 E HOJE VOCÊ AINDA RECEBE <span className="text-[#F97316]">5 BÔNUS EXCLUSIVOS GRÁTIS</span>
             </h2>
@@ -1289,7 +1304,7 @@ export default function App() {
             </div>
 
             {/* BÔNUS #5 */}
-            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group col-span-2 md:col-span-1 md:max-w-none fade-in-section">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-8 shadow-md border border-amber-100 hover:shadow-xl hover:border-amber-250 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group fade-in-section">
               {/* Corner Value Badge */}
               <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[8px] sm:text-xs uppercase tracking-wider px-2 py-1 rounded-bl-lg sm:rounded-bl-xl shadow-sm z-10 leading-none">
                 GRÁTIS
@@ -1360,7 +1375,7 @@ export default function App() {
               </div>
               <div className="flex items-start text-[14px] sm:text-base font-bold text-slate-800">
                 <span className="text-emerald-500 mr-2.5 select-none font-sans">✅</span>
-                <span>5 bônus exclusivos</span>
+                <span>6 bônus exclusivos</span>
               </div>
             </div>
           </div>
@@ -1526,7 +1541,7 @@ export default function App() {
                     </li>
                     <li className="flex items-start text-[13.5px] sm:text-sm font-semibold text-orange-600">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">🎁</span>
-                      <span>5 Bônus Exclusivos (R$275+)</span>
+                      <span>6 Bônus Exclusivos (R$322+)</span>
                     </li>
                     <li className="flex items-start text-[13.5px] sm:text-sm font-medium text-slate-800">
                       <span className="text-[#22C55E] mr-2 font-sans text-xs">✅</span>

@@ -60,7 +60,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage, overri
   const originalPriceLabel = isPremium ? 'R$ 97,00' : 'R$ 37,00';
   const titleLabel = overrideTitle || (isPremium ? 'Pacote Premium Completo' : 'Pacote Básico de Alfabetização');
   const descLabel = isPremium 
-    ? '+3.700 Atividades, Sílabas Simples + Complexas, 5 Bônus, Acesso Vitalício'
+    ? '+3.700 Atividades, Sílabas Simples + Complexas, 6 Bônus, Acesso Vitalício'
     : 'Pacote com 2.500 Atividades Prontas em PDF';
 
   // Extract clean number representation for mock PIX key
