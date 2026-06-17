@@ -32,7 +32,9 @@ import {
   Gift,
   Infinity,
   RefreshCw,
-  X
+  X,
+  Clock,
+  Flame
 } from 'lucide-react';
 
 import { motion, AnimatePresence } from 'motion/react';
@@ -282,6 +284,93 @@ function OptimizedCardImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+function CountdownOfferHeader() {
+  const [timeLeft, setTimeLeft] = useState({ hours: '00', minutes: '00', seconds: '00' });
+  const [formattedDate, setFormattedDate] = useState('');
+
+  useEffect(() => {
+    // Set date once on client mount
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const months = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    setFormattedDate(`${day} de ${month} de ${year}`);
+
+    // Update timer every second
+    const updateCountdown = () => {
+      const now = new Date();
+      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+      const diff = midnight.getTime() - now.getTime();
+      
+      if (diff <= 0) {
+        setTimeLeft({ hours: '00', minutes: '00', seconds: '00' });
+        return;
+      }
+      
+      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+      const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+      setTimeLeft({ hours, minutes, seconds });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center justify-center mb-6 max-w-lg mx-auto">
+      {/* Dynamic Date and Urgent Text in Red */}
+      <span className="flex items-center gap-2 bg-rose-50 text-red-700 border-2 border-red-500 font-black uppercase tracking-wider text-[11.5px] sm:text-xs px-4.5 py-2 rounded-full shadow-md mb-4.5 leading-none select-none">
+        <Flame className="w-5 h-5 text-red-600 fill-red-600 flex-shrink-0 animate-bounce" style={{ animationDuration: '1s' }} />
+        OFERTA VÁLIDA SOMENTE HOJE · <span className="text-red-600">{formattedDate}</span>
+      </span>
+      
+      {/* Ticking Digital Clock Countdown */}
+      <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 text-white rounded-2xl px-5 py-3 shadow-md scale-95 sm:scale-100 transition-all">
+        <div className="flex items-center gap-1.5 text-slate-400 text-xs font-black uppercase tracking-wider mr-2">
+          <Clock className="w-4 h-4 text-red-500 animate-spin" style={{ animationDuration: '4s' }} />
+          <span>EXPIRA EM:</span>
+        </div>
+        
+        <div className="flex items-center gap-1.5 font-mono text-xl sm:text-2xl font-black tracking-normal">
+          {/* Hours block */}
+          <div className="flex flex-col items-center">
+            <span className="bg-slate-800/80 px-2.5 py-1 rounded-lg text-red-500 border border-slate-700/60 min-w-[38px] text-center shadow-inner">
+              {timeLeft.hours}
+            </span>
+            <span className="text-[9px] text-slate-500 font-bold mt-1 tracking-wide uppercase">HORAS</span>
+          </div>
+          
+          <span className="text-red-500 text-lg sm:text-xl pb-4 animate-ping">:</span>
+          
+          {/* Minutes block */}
+          <div className="flex flex-col items-center">
+            <span className="bg-slate-800/80 px-2.5 py-1 rounded-lg text-red-500 border border-slate-700/60 min-w-[38px] text-center shadow-inner">
+              {timeLeft.minutes}
+            </span>
+            <span className="text-[9px] text-slate-500 font-bold mt-1 tracking-wide uppercase">MINS</span>
+          </div>
+          
+          <span className="text-red-500 text-lg sm:text-xl pb-4 animate-ping">:</span>
+          
+          {/* Seconds block */}
+          <div className="flex flex-col items-center">
+            <span className="bg-slate-800/80 px-2.5 py-1 rounded-lg text-rose-500 border border-slate-700/60 min-w-[38px] text-center shadow-inner">
+              {timeLeft.seconds}
+            </span>
+            <span className="text-[9px] text-slate-500 font-bold mt-1 tracking-wide uppercase">SEGS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HeroMockup() {
   return (
     <div className="relative w-full max-w-[480px] h-[230px] min-[400px]:h-[270px] sm:h-[380px] lg:h-[480px] mx-auto flex items-center justify-center select-none mt-1 sm:mt-3 lg:mt-0">
@@ -497,67 +586,7 @@ export default function App() {
     };
   }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
 
-  // 5. Rapid upward scroll detection (interest reversal / exit intention)
-  useEffect(() => {
-    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    let lastScrollTime = Date.now();
-
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const now = Date.now();
-      const dt = now - lastScrollTime;
-      if (dt > 10) {
-        const speed = (lastScrollTop - scrollTop) / dt; // positive speed is upward scrolling
-        
-        const offerElement = document.getElementById('oferta');
-        const offerOffset = offerElement ? offerElement.offsetTop : 99999;
-
-        // "rolar rapido pra cima mas só quando ela chegar nas seções Antes da seção de ofertas"
-        if (speed > 1.8 && hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null && scrollTop < offerOffset) {
-          setExitPopupStage(2);
-        }
-      }
-      lastScrollTop = scrollTop;
-      lastScrollTime = now;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
-
-  // 6. User inactivity timer (60 seconds idle once they have gazed at prices)
-  useEffect(() => {
-    let idleTimer: NodeJS.Timeout;
-
-    const resetIdleTimer = () => {
-      clearTimeout(idleTimer);
-      if (hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
-        idleTimer = setTimeout(() => {
-          setExitPopupStage(2);
-        }, 60000);
-      }
-    };
-
-    if (hasReachedOffers && !hasPurchased && !hasClosedExitProcess && exitPopupStage === null) {
-      window.addEventListener('mousemove', resetIdleTimer);
-      window.addEventListener('keydown', resetIdleTimer);
-      window.addEventListener('scroll', resetIdleTimer);
-      window.addEventListener('click', resetIdleTimer);
-      window.addEventListener('touchstart', resetIdleTimer);
-      resetIdleTimer();
-    }
-
-    return () => {
-      clearTimeout(idleTimer);
-      window.removeEventListener('mousemove', resetIdleTimer);
-      window.removeEventListener('keydown', resetIdleTimer);
-      window.removeEventListener('scroll', resetIdleTimer);
-      window.removeEventListener('click', resetIdleTimer);
-      window.removeEventListener('touchstart', resetIdleTimer);
-    };
-  }, [hasReachedOffers, hasPurchased, hasClosedExitProcess, exitPopupStage]);
+  // Rapid upward scroll and inactivity triggers removed to keep exit popup strictly on actual exit attempts (back button/tab close).
 
   const loopMessages = [
     "🔥 O valor pode aumentar sem aviso conforme novas atividades forem adicionadas."
@@ -1395,10 +1424,8 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 animate-fade-in">
           
           <div className="text-center mb-10 fade-in-section">
-            <span className="px-3 py-1 rounded-full text-[11px] font-black bg-emerald-100 text-emerald-800 uppercase tracking-widest mb-2.5 inline-block">
-              ⏱️ OFERTA POR TEMPO LIMITADO
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+            <CountdownOfferHeader />
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-6">
               Escolha o melhor plano para sua criança
             </h2>
             <p className="text-[#4b5563] text-[13.5px] sm:text-sm mt-2.5 font-medium leading-relaxed">
